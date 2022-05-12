@@ -8,6 +8,8 @@
 	-ms-flex-pack: flex-start;
 	justify-content: flex-start;
 	border-bottom: 1px solid rgb(84 84 84 / 70%);
+	padding-left:24px;
+	transition: 0.3s;
 }
 
 .header__logo {
@@ -16,10 +18,22 @@
 	padding-bottom: 41px;
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 792px) {
  
 	.header__logo {
-		width: 200px;
-		padding-top: 20px;
+		width: 173px;
+		
 	}
 }
+
+@media screen and (max-width: 540px) {
+	.header{
+	padding-left:27px;
+	}
+	.header__logo {
+		width: 126px;
+		padding-bottom:32px;
+	}
+
+}
+
