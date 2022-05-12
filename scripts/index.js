@@ -23,9 +23,9 @@ editProfileCloseBtn.addEventListener('click',hidePopup);
 
 
 
-function submitForm(){
-    //event.preventDefault();
-console.log('dztgxzdtg');
+function submitForm(evt){
+    evt.preventDefault();
+    console.log('dztgxzdtg');
     //profileTitle.textContent = popupProfileName.value;
     //profileSubtitle.textContent = popupProfileTitle.value;
     console.log(popupProfileName.value);
