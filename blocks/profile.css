@@ -4,7 +4,7 @@
 	display:flex;
 	max-width: 880px;
 	width: 100%;
-	margin: 40px auto 0;
+	margin: 0 auto;
 	-webkit-transition: 0.3s;
 	-o-transition: 0.3s;
 	transition: 0.3s;
@@ -22,10 +22,9 @@
 }
 .profile__edit{
 	display: flex;
-	justify-content:space-between;
 
 }
-.profile__title {
+.profile__name {
 	margin: 0;
 	text-align: left;
 	font-size: 42px;
@@ -36,7 +35,7 @@
 	overflow: hidden;
 }
 
-.profile__subtitle {
+.profile__title {
 	
 	text-align: left;
 	font-size: 18px;
@@ -59,7 +58,9 @@
 	width:24px;
 	height:24px;
 	display: flex;
+	justify-content: center;
 	margin-top:15px;
+	margin-left: 18px;
 	border: 1px solid #fff;
 	background-color: transparent;
 	transition: 0.3s;
@@ -111,7 +112,7 @@
 		margin: 36px auto 0;
 		min-width:282px;
 	}
-	.profile__subtitle {
+	.profile__title {
 		text-align: center;
 		}
 }
@@ -130,25 +131,24 @@
 	.profile__image-box{
 		margin-bottom: 26px;
 	}
-	.profile__title {
+	.profile__name {
 	font-size: 22px;
 	line-height: 27px;
 	}
-	.profile__subtitle {
+	.profile__title {
 	font-size: 14px;
 	line-height: 17px;
 	text-align: center;
 	}
 	.profile__edit-btn{
 		width:18px;
-	height:18px;
-	margin-left: 15px;
-margin-top: 4px;
+	    height:18px;
+	margin-left: 10px;
+     margin-top: 4px;
 	}
 	.profile__edit-icon{
-		width:8px;
-		height:8px;
-		margin: auto;
+		width:7.5px;
+		height:7.5px;
 		
 	}
 }

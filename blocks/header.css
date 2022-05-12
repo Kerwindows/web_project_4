@@ -1,6 +1,5 @@
 .header {
-	max-width: 880px;
-	margin: 0 auto;
+	
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -8,10 +7,15 @@
 	-ms-flex-pack: flex-start;
 	justify-content: flex-start;
 	border-bottom: 1px solid rgb(84 84 84 / 70%);
-	padding-left:24px;
 	transition: 0.3s;
 }
-
+.header__container{
+	box-sizing: border-box;
+	max-width: 928px;
+	width:100%;
+	margin: 0 auto;
+	padding: 0 24px;
+}
 .header__logo {
 	width: 173px;
 	height: auto;
@@ -27,7 +31,7 @@
 }
 
 @media screen and (max-width: 540px) {
-	.header{
+	.header__container{
 	padding-left:27px;
 	}
 	.header__logo {
