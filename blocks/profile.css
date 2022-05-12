@@ -36,7 +36,7 @@
 	overflow: hidden;
 }
 
-.profile__subtitle {
+.profile__title {
 	
 	text-align: left;
 	font-size: 18px;
@@ -111,7 +111,7 @@
 		margin: 36px auto 0;
 		min-width:282px;
 	}
-	.profile__subtitle {
+	.profile__title {
 		text-align: center;
 		}
 }
@@ -134,7 +134,7 @@
 	font-size: 22px;
 	line-height: 27px;
 	}
-	.profile__subtitle {
+	.profile__title {
 	font-size: 14px;
 	line-height: 17px;
 	text-align: center;

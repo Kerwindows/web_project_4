@@ -23,56 +23,56 @@
                     </div>
                     <div class="profile__column">
                         <div class="profile__edit">
-                            <h1 class="profile__title">Jacques Cousteau</h1>
+                            <h1 class="profile__name">Jacques Cousteau</h1>
                             <button class="profile__edit-btn"><img class="profile__edit-icon" src="./images/edit.svg" alt="Edit button" /></button>
                         </div>
-                        <p class="profile__subtitle">Explorer</p>
+                        <p class="profile__title">Explorer</p>
                     </div>
                     
                     <button class="profile__add-places-btn"><img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" /></button>
                 </section>
-                <section class="photo-grid">
-                    <ul class="photo-grid__column">
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/yosemite.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Yosemite Valley</p>
-                                <div class="photo-grid__place-favorite"></div>
+                <section class="card">
+                    <ul class="card__column">
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/yosemite.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Yosemite Valley</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                         </li>
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/lake.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Lake Louise</p>
-                                <div class="photo-grid__place-favorite"></div>
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/lake.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Lake Louise</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                         </li>
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/bald.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Bald Mountains</p>
-                                <div class="photo-grid__place-favorite"></div>
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/bald.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Bald Mountains</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                             </li>
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/latemar.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Latemar</p>
-                                <div class="photo-grid__place-favorite"></div>
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/latemar.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Latemar</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                             </li>
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/vanoise.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Vanoise National Park</p>
-                                <div class="photo-grid__place-favorite"></div>
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/vanoise.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Vanoise National Park</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                             </li>
-                        <li class="photo-grid__list-item">
-                            <img class="photo-grid__image" src="./images/lago.png" alt="Photo of place" />
-                            <div class="photo-grid__place-title">
-                                <p class="photo-grid__place-name">Lago di Braies</p>
-                                <div class="photo-grid__place-favorite"></div>
+                        <li class="card__list-item">
+                            <img class="card__image" src="./images/lago.png" alt="Photo of place" />
+                            <div class="card__place-title">
+                                <p class="card__place-name">Lago di Braies</p>
+                                <div class="card__place-favorite"></div>
                             </div>
                             </li>
                     </ul>
@@ -89,7 +89,7 @@
             <div class="pop-up__box"> 
                 <div class="pop-up__form">
                     <button class="pop-up__close-btn"><img class="pop-up__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="pop-up__edit-form">
+                    <form id="pop-up__edit-form">
                         <h2 class="pop-up__form-label">Edit Profile</h2>
                         <input class="pop-up__form-input pop-up__profile-name" value="" type="text" />
                         <input class="pop-up__form-input pop-up__profile-title" value="" type="text"/>
