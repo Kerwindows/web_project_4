@@ -2,15 +2,19 @@
 
 ### Overview
 
-* Figma
-* Images
+- Intro
+- Technologies
+- Project
+- Images
 
-**Figma**
+**Intro**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+This is a project that showcases places around the U.S. We've made it so all the elements are displayed correctly on popular screen sizes. This is the 4th project of the Web Development program at Practicum by Yandex. It was created using HTML CSS and JavaScript, based on a figma draft.
 
-**Images**
+**Technologies**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+HTML, CSS Flexbox and Grid Layout Responsive Design with JavaScript.
 
-Have fun with JavaScript!
+**Project**
+
+- [See it live](https://kerwindows.github.io/web_project_4/)
