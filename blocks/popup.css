@@ -46,15 +46,13 @@
     position:absolute;
     top: 0;
 }
-.pop-up__box{
-    margin:auto auto;
-    padding:0 19px;
-}
+
 .pop-up__form{
+    margin:auto auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     max-width:430px;
-    width:100%;
+    width:calc(100% - 38px);
     padding:34px 36px 36px 36px;
     background-color:#fff;
    
@@ -67,6 +65,8 @@ border-radius: 10px;
 transition: 0.3s;
 }
 .pop-up__close-btn{
+    width:40px;
+    height:40px;
     position:absolute;
     padding: 0;
     border: none;
@@ -76,14 +76,15 @@ transition: 0.3s;
     -webkit-transition:0.3s;
     -o-transition:0.3s;
     transition:0.3s;
+
 }
 .pop-up__close-btn:hover{
 opacity: 0.6;
 cursor:pointer;
 }
 .pop-up__close-icon{
-    width:40px;
-    height:40px;
+    width:100%;
+    height:auto;
 }
 .pop-up__form-label{
     font-weight: 900;
@@ -103,9 +104,7 @@ cursor:pointer;
     margin-bottom:17px;
     color:#000000;
 }
-.pop-up__form-input:focus-visible {
-    outline: none;
-  }
+
 .pop-up__save-btn{
     max-width:358px;
     width:100%;

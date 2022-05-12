@@ -1,5 +1,7 @@
 .header {
-	
+	max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -14,10 +16,7 @@
 .header__container{
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-	max-width: 928px;
-	width:100%;
-	margin: 0 auto;
-	padding: 0 24px;
+	
 }
 .header__logo {
 	width: 173px;

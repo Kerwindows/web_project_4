@@ -3,9 +3,9 @@ let popupForm = document.querySelector(".pop-up");
 let editProfileCloseBtn = document.querySelector(".pop-up__close-btn");
 let profileName = document.querySelector(".profile__edit-name");
 let profileTitle = document.querySelector(".profile__edit-title");
-let popupProfileName = popupForm.querySelector(".pop-up__profile-name");
-let popupprofileTitle = popupForm.querySelector(".pop-up__profile-title");
-let submit = popupForm.querySelector("#pop-up__edit-form");
+let popupProfileName = popupForm.querySelector(".pop-up__form-input_profile-name");
+let popupprofileTitle = popupForm.querySelector(".pop-up__form-input_profile-title");
+let submit = popupForm.querySelector(".pop-up__edit-form");
 
 function showPopup(){
     popupForm.classList.remove("pop-up_hide");

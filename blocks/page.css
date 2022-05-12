@@ -5,6 +5,8 @@
 	min-width:320px;
 	margin: 0 auto;
 	padding-top:45px;
+	padding-left: 24px;
+	padding-right:24px;
 	background: #000000;
 	color: #fff;
 	font-family: 'Inter', Arial, sans-serif;
@@ -16,5 +18,7 @@
    
 	.page {
 		padding-top:28px;
+		padding-left:19px;
+	padding-right:19px;
 	}
 }
