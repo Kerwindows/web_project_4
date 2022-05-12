@@ -3,7 +3,7 @@
 	box-sizing: border-box;
 	max-width:880px;
 	margin: 0 auto;
-	padding: 76px 0 68px;
+	padding: 50px 0 68px;
 
 }
 
@@ -12,9 +12,12 @@
 	box-sizing: border-box;
 	width:100%;
 	margin: 0 auto;
+	display: -ms-grid;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 282px);
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	grid-column-gap:17px;
 	grid-row-gap:20px;
 	justify-items: center;
@@ -41,14 +44,21 @@
 .card__place-title{
 	max-width:246px;
 	margin:25px auto 31px;
+	display:-webkit-box;
+	display:-ms-flexbox;
 	display:flex;
-	justify-content: space-between;
-	align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .card__place-name{
 	width:246px;
 	margin:0;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 	color:#000;
@@ -61,6 +71,8 @@
   background-repeat: no-repeat;
   width:21px;
   height:19px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 .card__place-favorite:hover{
@@ -73,9 +85,6 @@
 }
 .card__place-favorite-active{
 	fill:black;
-}
-@media screen and (max-width: 792px) {
-
 }
 
 @media screen and (max-width: 540px) {

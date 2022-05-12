@@ -14,19 +14,22 @@
     <body class="body">
         <div class="page">
             <header class="header">
-                <img src="./images/logo.svg" alt="Homeland" class="header__logo" />
+                <div  class="header__container">
+                    <img src="./images/logo.svg" alt="Homeland" class="header__logo" />
+                </div>
+                
             </header>
             <main class="main">
                 <section class="profile">
                     <div class="profile__image-box">
                         <img class="profile__image" src="./images/jacques.png" alt="Photo of place" />
                     </div>
-                    <div class="profile__column">
+                    <div class="profile__edit-column">
                         <div class="profile__edit">
-                            <h1 class="profile__name">Jacques Cousteau</h1>
+                            <h1 class="profile__edit-name">Jacques Cousteau</h1>
                             <button class="profile__edit-btn"><img class="profile__edit-icon" src="./images/edit.svg" alt="Edit button" /></button>
                         </div>
-                        <p class="profile__title">Explorer</p>
+                        <p class="profile__edit-title">Explorer</p>
                     </div>
                     
                     <button class="profile__add-places-btn"><img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" /></button>
@@ -80,7 +83,9 @@
             
             </main>
             <footer class="footer">
-                <p class="footer__copyright">© 2022 Around The U.S.</p>
+                <div class="footer__column">
+                    <p class="footer__copyright">© 2022 Around The U.S.</p>
+                </div>
             </footer>
             
         </div>
