@@ -1,16 +1,16 @@
-let editProfileOpenBtn = document.querySelector(".profile__edit-btn");
-let popupForm = document.querySelector(".pop-up");
-let editProfileCloseBtn = document.querySelector(".pop-up__close-btn");
-let profileName = document.querySelector(".profile__edit-name");
-let profileTitle = document.querySelector(".profile__edit-title");
-let popupProfileName = popupForm.querySelector(".pop-up__form-input_profile-name");
-let popupprofileTitle = popupForm.querySelector(".pop-up__form-input_profile-title");
-let submit = popupForm.querySelector(".pop-up__edit-form");
+const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
+const popupForm = document.querySelector(".pop-up");
+const editProfileCloseBtn = document.querySelector(".pop-up__close-btn");
+const profileName = document.querySelector(".profile__edit-name");
+const proficonstitle = document.querySelector(".profile__edit-title");
+const popupProfileName = popupForm.querySelector(".pop-up__form-input_type_profile-name");
+const popupproficonstitle = popupForm.querySelector(".pop-up__form-input_type_profile-title");
+const submit = popupForm.querySelector(".pop-up__edit-form");
 
 function showPopup(){
     popupForm.classList.remove("pop-up_hide");
     popupProfileName.value = profileName.textContent;
-    popupprofileTitle.value = profileTitle.textContent;
+    popupproficonstitle.value = proficonstitle.textContent;
 }
 function hidePopup(){
     popupForm.classList.add("pop-up_hide");
@@ -23,7 +23,7 @@ editProfileCloseBtn.addEventListener('click',hidePopup);
 function submitForm(evt){
     evt.preventDefault();
     profileName.textContent = popupProfileName.value;
-    profileTitle.textContent = popupprofileTitle.value;
+    proficonstitle.textContent = popupproficonstitle.value;
     hidePopup();
 }
 submit.addEventListener("submit", submitForm); 
