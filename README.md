@@ -5,7 +5,6 @@
 - Intro
 - Technologies
 - Project
-- Images
 
 **Intro**
 
