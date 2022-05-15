@@ -18,4 +18,4 @@ HTML, CSS Flexbox and Grid Layout Responsive Design with JavaScript.
 
 - [See it live](https://kerwindows.github.io/web_project_4/)
 
-![Book logo](/least-github-pages/assets/logo.png)
+![Book logo](https://kerwindows.github.io/web_project_4/images/lake.png)
