@@ -13,7 +13,9 @@
 This is a project that showcases places around the U.S. We've made it so all the elements are displayed correctly on popular screen sizes. This is the 4th project of the Web Development program at Practicum by Yandex. It was created using HTML CSS and JavaScript, based on a figma draft.
 
 **Main Requirements**
+
 Layout
+
 - The website appearance corresponds with the design.
 - The BEM file structure is used.
 - The design is responsive: the width of the content area must change depending on the width of the browser window. There shouldn't be any horizontal scrolling. Minimum window width is 320px (one card in a row). Maximum window width is 1280px (three cards in a row, 880px for the content and 200px of empty space on each side). If your browser window is wider than that, the content area should not get any wider.
