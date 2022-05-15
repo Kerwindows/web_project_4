@@ -28,7 +28,7 @@
                             <h1 class="profile__edit-name">Jacques Cousteau</h1>
                             <button class="profile__edit-btn" type="button"><img class="profile__edit-icon" src="./images/edit.svg" alt="Edit button" /></button>
                         </div>
-                        <p class="profile__edit-title">Explorer</p>
+                        <p class="profile__about-me">Explorer</p>
                     </div>
                     
                     <button class="profile__add-places-btn" type="button"><img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" /></button>
@@ -86,15 +86,15 @@
             </footer>
             
         </div>
-        <div class="pop-up pop-up_hide">
-            <div class="pop-up__overlay"></div>
-                <div class="pop-up__form">
-                    <button class="pop-up__close-btn" type="button"><img class="pop-up__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="pop-up__edit-form" name="profile-form">
-                        <h2 class="pop-up__form-label">Edit Profile</h2>
-                        <input class="pop-up__form-input pop-up__form-input_type_profile-name" name="profile-name" type="text" />
-                        <input class="pop-up__form-input pop-up__form-input_type_profile-title" name="profile-title" type="text"/>
-                        <button class="pop-up__save-btn" type="submit">Save</button>
+        <div class="popup">
+            <div class="popup__overlay"></div>
+                <div class="popup__form">
+                    <button class="popup__close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
+                    <form class="popup__edit-form" name="profile-form">
+                        <h2 class="popup__form-label">Edit Profile</h2>
+                        <input class="popup__form-input popup__form-input_type_profile-name" name="profile-name" type="text" placeholder="Name" />
+                        <input class="popup__form-input popup__form-input_type_profile-about-me" name="profile-about-me" type="text" placeholder="About Me"/>
+                        <button class="popup__save-btn" type="submit">Save</button>
                     </form>
             </div>
             

@@ -20,14 +20,12 @@
  }
 
 
-.pop-up{
+.popup{
 	min-width:100%;
     min-height:100vh;
     position:fixed;
     top: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display:none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -36,10 +34,12 @@
     
 
 }
-.pop-up_hide{
-    display:none;
+.popup_opened{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display:flex;
 }
-.pop-up__overlay{
+.popup__overlay{
 	min-width:100%;
     min-height:100%;
     background: rgba(0, 0, 0, 0.5);
@@ -47,7 +47,7 @@
     top: 0;
 }
 
-.pop-up__form{
+.popup__form{
     margin:auto auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -64,7 +64,7 @@ border-radius: 10px;
 -o-transition: 0.3s;
 transition: 0.3s;
 }
-.pop-up__close-btn{
+.popup__close-btn{
     width:40px;
     height:40px;
     position:absolute;
@@ -78,21 +78,21 @@ transition: 0.3s;
     transition:0.3s;
 
 }
-.pop-up__close-btn:hover{
+.popup__close-btn:hover{
 opacity: 0.6;
 cursor:pointer;
 }
-.pop-up__close-icon{
+.popup__close-icon{
     width:100%;
     height:auto;
 }
-.pop-up__form-label{
+.popup__form-label{
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
     margin:0 0 41px;
 }
-.pop-up__form-input{
+.popup__form-input{
     max-width:358px;
     width:100%;
     border:none;
@@ -105,7 +105,7 @@ cursor:pointer;
     color:#000000;
 }
 
-.pop-up__save-btn{
+.popup__save-btn{
     max-width:358px;
     width:100%;
     background-color: #000000;
@@ -123,26 +123,22 @@ text-align: center;
     transition: 0.3s;
 
 }  
-.pop-up__save-btn:hover{
+.popup__save-btn:hover{
     opacity: 0.8;
     cursor:pointer;
 }
-.pop-up__form-profile-name{
-    
-}
-.pop-up__form-profile-title{
-}
+
 @media screen and (max-width: 540px) {
-    .pop-up__form{
+    .popup__form{
         padding:25px 22px 25px 22px;
     }
-    .pop-up__close-btn{
+    .popup__close-btn{
         right:0;
         top:-40px;
         -webkit-animation: spin 0.3s;
                 animation: spin 0.3s;
     }
-    .pop-up__close-icon{
+    .popup__close-icon{
         width:26px;
         height:26px;
     }

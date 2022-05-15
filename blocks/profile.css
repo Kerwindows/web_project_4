@@ -45,7 +45,7 @@
 	overflow: hidden;
 }
 
-.profile__edit-title {
+.profile__about-me {
 	margin:0;
 	text-align: left;
 	font-size: 18px;
@@ -120,6 +120,11 @@
 		    -ms-flex-direction: column;
 		        flex-direction: column;
 	}
+	.profile__edit{
+		-webkit-box-pack: center;
+	        -ms-flex-pack: center;
+	            justify-content: center;
+	}
 	.profile__edit-column{
 		margin: 0 auto;
 	}
@@ -132,7 +137,7 @@
 		margin: 36px auto 0;
 		min-width:282px;
 	}
-	.profile__edit-title {
+	.profile__about-me {
 		text-align: center;
 		}
 }
@@ -146,16 +151,13 @@
 	}
 	.profile__edit{
 		margin: 0 auto;
-	    -webkit-box-pack: center;
-	        -ms-flex-pack: center;
-	            justify-content: center;
 	}
 	
 	.profile__edit-name {
 	font-size: 22px;
 	line-height: 27px;
 	}
-	.profile__edit-title {
+	.profile__about-me {
 	font-size: 14px;
 	line-height: 17px;
 	text-align: center;
