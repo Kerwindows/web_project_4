@@ -5,6 +5,7 @@
 - Intro
 - Technologies
 - Project
+- Figma Canvas
 
 **Intro**
 
@@ -18,4 +19,6 @@ HTML, CSS Flexbox and Grid Layout Responsive Design with JavaScript.
 
 - [See it live](https://kerwindows.github.io/web_project_4/)
 
-![Book logo](https://kerwindows.github.io/web_project_4/images/lake.png)
+**Figma Canvas**
+
+![Main Page](https://github.com/Kerwindows/web_project_4/blob/main/images/MAIN%20PAGE.jpg?raw=true)
