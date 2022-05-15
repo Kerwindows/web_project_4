@@ -25,6 +25,6 @@ HTML, CSS Flexbox and Grid Layout Responsive Design with JavaScript.
 
 ![Main Page Edit Form](https://github.com/Kerwindows/web_project_4/blob/main/images/EDIT-FORM.jpg?raw=true)
 
-![Mobile Page Edit Form](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE-EDIT-FORM.jpg?raw=true) ![Mobile Page](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE.jpg?raw=true) 
+![Mobile Page](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE.jpg?raw=true) ![Mobile Page Edit Form](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE-EDIT-FORM.jpg?raw=true)
 
 ![UI Kit](https://github.com/Kerwindows/web_project_4/blob/main/images/UI-KIT.jpg?raw=true)
