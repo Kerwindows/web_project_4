@@ -45,6 +45,7 @@
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
+  color:transparent;
 }
 .card__place-favorite:hover{
 	opacity: 0.5;
