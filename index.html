@@ -34,50 +34,7 @@
                     <button class="profile__add-places-btn" type="button"><img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" /></button>
                 </section>
                 <section class="cards">
-                    <ul class="cards__list">
-                        <li class="card">
-                            <img class="card__image" src="./images/yosemite.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Yosemite Valley</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                        </li>
-                        <li class="card">
-                            <img class="card__image" src="./images/lake.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Lake Louise</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                        </li>
-                        <li class="card">
-                            <img class="card__image" src="./images/bald.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Bald Mountains</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                            </li>
-                        <li class="card">
-                            <img class="card__image" src="./images/latemar.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Latemar</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                            </li>
-                        <li class="card">
-                            <img class="card__image" src="./images/vanoise.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Vanoise National Park</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                            </li>
-                        <li class="card">
-                            <img class="card__image" src="./images/lago.png" alt="Photo of place" />
-                            <div class="card__place-title">
-                                <h2 class="card__place-name">Lago di Braies</h2>
-                                <div class="card__place-favorite"></div>
-                            </div>
-                            </li>
-                    </ul>
+                    <ul class="cards__list"></ul>
                 </section>
             
             </main>
@@ -86,7 +43,8 @@
             </footer>
             
         </div>
-        <div class="popup">
+        <!-- ---------------------------- edit profile ----------------------------- -->
+        <div class="popup edit__profile">
             <div class="popup__overlay"></div>
                 <div class="popup__form">
                     <button class="popup__close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
@@ -97,8 +55,31 @@
                         <button class="popup__save-btn" type="submit">Save</button>
                     </form>
             </div>
-            
         </div>
+        <!-- ------------------------------ add place ------------------------------ -->
+        <div class="popup add__place">
+            <div class="popup__overlay"></div>
+                <div class="popup__form">
+                    <button class="popup__close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
+                    <form class="popup__place-form" name="profile-form">
+                        <h2 class="popup__form-label">Add Place</h2>
+                        <input class="popup__form-input popup__form-input_type_place-name" name="place-name" type="text" placeholder="Title" />
+                        <input class="popup__form-input popup__form-input_type_place-link" name="place-link" type="text" placeholder="Url Link"/>
+                        <button class="popup__save-btn" type="submit">Save</button>
+                    </form>
+            </div>
+        </div>
+        <!-- ---------------------------- card template ---------------------------- -->
+        <template id="card-template">
+            <li class="card">
+                <img class="card__image" src="./images/yosemite.png" alt="Photo of place" />
+                <div class="card__place-title">
+                    <h2 class="card__place-name">Yosemite Valley</h2>
+                    <div class="card__place-favorite card__place-favorite_active"></div>
+                </div>
+            </li>
+
+        </template>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
