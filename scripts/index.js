@@ -1,8 +1,8 @@
-/* ------------------------------ edit profile ------------------------------ */
+/* ------------------------------ edit profile  ------------------------------ */
+
 const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__edit-name");
 const proficonstitle = document.querySelector(".profile__about-me");
-
 const popupForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
 const popupProfileName = document.querySelector(".popup__form-input_type_profile-name");
@@ -19,9 +19,10 @@ const popupPlaceName = document.querySelector(".popup__form-input_type_place-nam
 const popupPlaceUrl = document.querySelector(".popup__form-input_type_place-link");
 const submitNewPlace = document.querySelector(".popup__place-form");
 const noPlaceFound = document.querySelector(".cards__no-songs");
-/* ----------------------------- Generate Cards ----------------------------- */
-const placeList = document.querySelector(".cards__list");
 
+/* ----------------------------- Generate Cards ----------------------------- */
+
+const placeList = document.querySelector(".cards__list");
 const placeTemplate = document.querySelector("#card-template").content;
 
 /* ------------------------------ image preview ----------------------------- */
@@ -85,15 +86,17 @@ function deletePlace() {
     popupPlaceName.value = '';
     popupPlaceUrl.value = '';
 }
-
+//submit profile
 function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = popupProfileName.value;
     proficonstitle.textContent = popupProfIconsTitle.value;
     hideEditProfilePopup();
 }
-submit.addEventListener("submit", submitEditProfileForm);
 
+
+
+//submit new place
 function submitAddPlaceForm(evt) {
     evt.preventDefault();
     const placeName = popupPlaceName.value;
@@ -105,6 +108,7 @@ function submitAddPlaceForm(evt) {
     placeElementAdd.querySelector(".card__place-favorite").addEventListener("click", function(evt) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
+
     placeElementAdd.querySelector(".card__trash").addEventListener("click", ()=>{
         place.remove();
         if (placeList.textContent.trim().length == '') {
@@ -113,28 +117,15 @@ function submitAddPlaceForm(evt) {
         } else {
             noPlaceFound.classList.remove("cards__no-songs_active");
         }
-
     }
     );
     noPlaceFound.classList.remove("cards__no-songs_active");
     placeList.prepend(placeElementAdd);
-
     hideAddPlacePopup();
     clearForm();
 }
 
-submitNewPlace.addEventListener("submit", submitAddPlaceForm);
-
-editProfileOpenBtn.addEventListener('click', showEditProfilePopup);
-editProfileCloseBtn.addEventListener('click', hideEditProfilePopup);
-addPlacesOpenBtn.addEventListener('click', showAddPlacePopup);
-addPlaceCloseBtn.addEventListener('click', hideAddPlacePopup);
-
-viewImageCloseBtn.addEventListener("click", ()=>{
-    hidePreviewImage();
-}
-);
-
+//display places from array object
 initialplaces.forEach(function(card) {
     //clone card template
     const placeElement = placeTemplate.cloneNode(true);
@@ -163,3 +154,17 @@ initialplaces.forEach(function(card) {
 
     placeList.prepend(placeElement);
 });
+//profile edit
+editProfileOpenBtn.addEventListener('click', showEditProfilePopup);
+editProfileCloseBtn.addEventListener('click', hideEditProfilePopup);
+submit.addEventListener("submit", submitEditProfileForm);
+
+//add place
+addPlacesOpenBtn.addEventListener('click', showAddPlacePopup);
+addPlaceCloseBtn.addEventListener('click', hideAddPlacePopup);
+submitNewPlace.addEventListener("submit", submitAddPlaceForm);
+
+//image preview
+viewImageCloseBtn.addEventListener("click", ()=>{ hidePreviewImage();});
+
+
