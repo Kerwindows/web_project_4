@@ -18,7 +18,7 @@ const submitPlace = document.querySelector(".popup__place-form");
 const popupPlaceName = document.querySelector(".popup__form-input_type_place-name");
 const popupPlaceUrl = document.querySelector(".popup__form-input_type_place-link");
 const submitNewPlace = document.querySelector(".popup__place-form");
-
+const noPlaceFound = document.querySelector(".cards__no-songs");
 /* ----------------------------- Generate Cards ----------------------------- */
 const placeList = document.querySelector(".cards__list");
 
@@ -102,12 +102,25 @@ function submitForm2(evt) {
     const placeName = popupPlaceName.value;
     const placeLink = popupPlaceUrl.value;
     const placeElementAdd = placeTemplate.cloneNode(true);
+    const place = placeElementAdd.querySelector(".card");
     placeElementAdd.querySelector(".card__place-name").textContent = placeName;
     placeElementAdd.querySelector(".card__image").src = placeLink;
     placeElementAdd.querySelector(".card__place-favorite").addEventListener("click", function(evt) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
+    placeElementAdd.querySelector(".card__trash").addEventListener("click", ()=>{
+      place.remove();
+      if(placeList.textContent.trim().length == ''){
+        noPlaceFound.classList.add("cards__no-songs_active");
+        
+        }else{
+          noPlaceFound.classList.remove("cards__no-songs_active");
+        }
+        
+  });
+  noPlaceFound.classList.remove("cards__no-songs_active");
     placeList.prepend(placeElementAdd);
+    
 
     hideAddPlacePopup();
     clearForm();
@@ -136,8 +149,13 @@ initialplaces.forEach(function(card) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
     placeElement.querySelector(".card__trash").addEventListener("click", ()=>{
-      console.log(place)
       place.remove();
+      if(placeList.textContent.trim().length == ''){
+        noPlaceFound.classList.add("cards__no-songs_active");
+        
+        }else{
+          noPlaceFound.classList.remove("cards__no-songs_active");
+        }
   });
 
     /*placeElement.querySelector(".card__image").addEventListener("click", ()=>  onImagePreview(card){
@@ -149,3 +167,6 @@ initialplaces.forEach(function(card) {
   
     placeList.prepend(placeElement);
 });
+
+
+
