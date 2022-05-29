@@ -83,7 +83,7 @@ function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = popupProfileName.value;
     profileIconsTitle.textContent = popupProfileIconsTitle.value;
-    hideEditProfilePopup();
+    closeModal(popupForm);
 }
 
 //submit new place
