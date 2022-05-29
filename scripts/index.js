@@ -28,7 +28,6 @@ const placeTemplate = document.querySelector("#card-template").content;
 const imagePopup = document.querySelector("#view__image");
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
-
 /* --------------------------------- places --------------------------------- */
 const initialplaces = [{
     name: "Lake Louise",
@@ -70,15 +69,13 @@ function hideAddPlacePopup() {
 }
 
 function showPreviewImage(img) {
-  imagePopup.classList.add("popup_opened");
-  const popupImg = document.querySelector(".popup__card-image-preview").src = img;
+    imagePopup.classList.add("popup_opened");
+    const popupImg = document.querySelector(".popup__card-image-preview").src = img;
 }
 
 function hidePreviewImage() {
-  imagePopup.classList.remove("popup_opened");
+    imagePopup.classList.remove("popup_opened");
 }
-
-
 
 function clearForm() {
     popupPlaceName.value = '';
@@ -89,15 +86,15 @@ function deletePlace() {
     popupPlaceUrl.value = '';
 }
 
-function submitForm(evt) {
+function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = popupProfileName.value;
     proficonstitle.textContent = popupProfIconsTitle.value;
     hideEditProfilePopup();
 }
-submit.addEventListener("submit", submitForm);
+submit.addEventListener("submit", submitEditProfileForm);
 
-function submitForm2(evt) {
+function submitAddPlaceForm(evt) {
     evt.preventDefault();
     const placeName = popupPlaceName.value;
     const placeLink = popupPlaceUrl.value;
@@ -109,34 +106,34 @@ function submitForm2(evt) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
     placeElementAdd.querySelector(".card__trash").addEventListener("click", ()=>{
-      place.remove();
-      if(placeList.textContent.trim().length == ''){
-        noPlaceFound.classList.add("cards__no-songs_active");
-        
-        }else{
-          noPlaceFound.classList.remove("cards__no-songs_active");
+        place.remove();
+        if (placeList.textContent.trim().length == '') {
+            noPlaceFound.classList.add("cards__no-songs_active");
+
+        } else {
+            noPlaceFound.classList.remove("cards__no-songs_active");
         }
-        
-  });
-  noPlaceFound.classList.remove("cards__no-songs_active");
+
+    }
+    );
+    noPlaceFound.classList.remove("cards__no-songs_active");
     placeList.prepend(placeElementAdd);
-    
 
     hideAddPlacePopup();
     clearForm();
 }
 
-submitNewPlace.addEventListener("submit", submitForm2);
+submitNewPlace.addEventListener("submit", submitAddPlaceForm);
 
 editProfileOpenBtn.addEventListener('click', showEditProfilePopup);
 editProfileCloseBtn.addEventListener('click', hideEditProfilePopup);
-
 addPlacesOpenBtn.addEventListener('click', showAddPlacePopup);
 addPlaceCloseBtn.addEventListener('click', hideAddPlacePopup);
 
-viewImageCloseBtn.addEventListener("click", ()=> {
-  hidePreviewImage();
-});
+viewImageCloseBtn.addEventListener("click", ()=>{
+    hidePreviewImage();
+}
+);
 
 initialplaces.forEach(function(card) {
     //clone card template
@@ -149,24 +146,20 @@ initialplaces.forEach(function(card) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
     placeElement.querySelector(".card__trash").addEventListener("click", ()=>{
-      place.remove();
-      if(placeList.textContent.trim().length == ''){
-        noPlaceFound.classList.add("cards__no-songs_active");
-        
-        }else{
-          noPlaceFound.classList.remove("cards__no-songs_active");
-        }
-  });
+        place.remove();
+        if (placeList.textContent.trim().length == '') {
+            noPlaceFound.classList.add("cards__no-songs_active");
 
-    /*placeElement.querySelector(".card__image").addEventListener("click", ()=>  onImagePreview(card){
-        //do something...
-    });*/
-    placeElement.querySelector(".card__image").addEventListener("click", ()=>  {
-      showPreviewImage(img);
-  });
-  
+        } else {
+            noPlaceFound.classList.remove("cards__no-songs_active");
+        }
+    }
+    );
+
+    placeElement.querySelector(".card__image").addEventListener("click", ()=>{
+        showPreviewImage(img);
+    }
+    );
+
     placeList.prepend(placeElement);
 });
-
-
-
