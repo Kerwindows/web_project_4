@@ -36,7 +36,7 @@
 }
 
 .cards__no-places_active{
-	display:block
+	display:block;
 }
 
 @media screen and (max-width: 540px) {
