@@ -35,6 +35,9 @@
                 </section>
                 <section class="cards">
                     <ul class="cards__list"></ul>
+                    <div class="cards__no-songs">
+                        <p class="cards__no-songs-text">No images to display</p>
+                      </div>
                 </section>
             
             </main>
@@ -44,10 +47,10 @@
             
         </div>
         <!-- ---------------------------- edit profile ----------------------------- -->
-        <div class="popup edit__profile">
+        <div id="edit__profile" class="popup">
             <div class="popup__overlay"></div>
                 <div class="popup__form">
-                    <button class="popup__close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
+                    <button class="popup__close-btn popup__edit-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
                     <form class="popup__edit-form" name="profile-form">
                         <h2 class="popup__form-label">Edit Profile</h2>
                         <input class="popup__form-input popup__form-input_type_profile-name" name="profile-name" type="text" placeholder="Name" />
@@ -57,28 +60,37 @@
             </div>
         </div>
         <!-- ------------------------------ add place ------------------------------ -->
-        <div class="popup add__place">
+        <div id='add__place' class="popup">
             <div class="popup__overlay"></div>
                 <div class="popup__form">
-                    <button class="popup__close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
+                    <button class="popup__close-btn popup__place-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
                     <form class="popup__place-form" name="profile-form">
                         <h2 class="popup__form-label">Add Place</h2>
                         <input class="popup__form-input popup__form-input_type_place-name" name="place-name" type="text" placeholder="Title" />
                         <input class="popup__form-input popup__form-input_type_place-link" name="place-link" type="text" placeholder="Url Link"/>
-                        <button class="popup__save-btn" type="submit">Save</button>
+                        <button class="popup__save-btn add__place-save-btn" type="submit">Save</button>
                     </form>
+            </div>
+        </div>
+        <!------popup image-->
+        <div id='view__image' class="popup">
+            <div class="popup__overlay"></div>
+                <div class="popup__form popup__form_image">
+                    <button class="popup__close-btn popup__image-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
+                    <img class="popup__card-image-preview" src="" alt="Photo of place" />
+                  
             </div>
         </div>
         <!-- ---------------------------- card template ---------------------------- -->
         <template id="card-template">
             <li class="card">
-                <img class="card__image" src="./images/yosemite.png" alt="Photo of place" />
+                <img class="card__image" src="" alt="Photo of place" />
+                <button class="card__trash" ><img class="card__trash-image" src="./images/Trash.svg" alt="Trash" /></button>
                 <div class="card__place-title">
-                    <h2 class="card__place-name">Yosemite Valley</h2>
-                    <div class="card__place-favorite card__place-favorite_active"></div>
+                    <h2 class="card__place-name"></h2>
+                    <div class="card__place-favorite "></div>
                 </div>
             </li>
-
         </template>
         <script src="./scripts/index.js"></script>
     </body>

@@ -25,19 +25,23 @@
     min-height:100vh;
     position:fixed;
     top: 0;
-    display:none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display:flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     font-family: 'Inter', Arial, sans-serif;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
     
 
 }
 .popup_opened{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display:flex;
+    visibility: visible;
+    opacity: 1;
 }
 .popup__overlay{
 	min-width:100%;
@@ -126,6 +130,21 @@ text-align: center;
 .popup__save-btn:hover{
     opacity: 0.8;
     cursor:pointer;
+}
+.popup__form_image{
+    background:none;
+    max-width:75vw;
+    max-height:75vh;
+    width:auto;
+    padding:0;
+    margin:auto;
+
+}
+
+.popup__card-image-preview {
+    width: 100%;
+    max-width:75vw;
+    max-height:75vh;
 }
 
 @media screen and (max-width: 540px) {

@@ -27,6 +27,11 @@
 	padding: 0;
 	list-style: none;
 }
+.cards__no-songs{}
+
+.cards__no-songs-text{}
+
+
 
 @media screen and (max-width: 540px) {
    
