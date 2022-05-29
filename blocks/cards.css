@@ -27,13 +27,15 @@
 	padding: 0;
 	list-style: none;
 }
-.cards__no-songs{
+.cards__no-places{
 	display:none;
 }
 
-.cards__no-songs-text{}
+.cards__no-places-text{
+	
+}
 
-.cards__no-songs_active{
+.cards__no-places_active{
 	display:block
 }
 

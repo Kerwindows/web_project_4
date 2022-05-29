@@ -2,12 +2,14 @@
 
 const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__edit-name");
-const proficonstitle = document.querySelector(".profile__about-me");
+const profileIconsTitle = document.querySelector(".profile__about-me");
 const popupForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
 const popupProfileName = document.querySelector(".popup__form-input_type_profile-name");
-const popupProfIconsTitle = document.querySelector(".popup__form-input_type_profile-about-me");
+const popupProfileIconsTitle = document.querySelector(".popup__form-input_type_profile-about-me");
 const submit = document.querySelector(".popup__edit-form");
+
+// profileIconsTitle => profileIconsTitle
 
 /* -------------------------------- add place ------------------------------- */
 
@@ -18,7 +20,7 @@ const submitPlace = document.querySelector(".popup__place-form");
 const popupPlaceName = document.querySelector(".popup__form-input_type_place-name");
 const popupPlaceUrl = document.querySelector(".popup__form-input_type_place-link");
 const submitNewPlace = document.querySelector(".popup__place-form");
-const noPlaceFound = document.querySelector(".cards__no-songs");
+const noPlaceFound = document.querySelector(".cards__no-places");
 
 /* ----------------------------- Generate Cards ----------------------------- */
 
@@ -31,22 +33,22 @@ const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
 const initialplaces = [{
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+    name: "Tobago",
+    link: "https://th.bing.com/th/id/OIP.AfQeN6j8IHA1QwQV1LAhMgHaE8?pid=ImgDet&rs=1"
 }, {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+    name: "Turks & Caicos",
+    link: "https://th.bing.com/th/id/R.2256ea7e2645811623722e1984fa2cea?rik=Pul7OZw45sq3Ig&pid=ImgRaw&r=0"
 }, {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+    name: "Paris",
+    link: "https://th.bing.com/th/id/R.9550f55006740bf41c970da21eee7bad?rik=6890JkFG%2f4Cs2w&pid=ImgRaw&r=0"
 }, {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+    name: "South Island, New Zealand",
+    link: "https://th.bing.com/th/id/OIP.eda4bswSTGR8dkvPL382IgHaEt?pid=ImgDet&rs=1"
 }, {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+    name: "West Maui",
+    link: "https://th.bing.com/th/id/OIP.H1kCOg0IQXbEx3p9k-DXkAHaE5?pid=ImgDet&rs=1"
 }, {
-    name: "Orlando",
+    name: "Orlando, Florida",
     link: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
 }];
 /* --------------------------------- popups --------------------------------- */
@@ -54,47 +56,35 @@ const initialplaces = [{
 function showEditProfilePopup() {
     popupForm.classList.add("popup_opened");
     popupProfileName.value = profileName.textContent;
-    popupProfIconsTitle.value = proficonstitle.textContent;
+    popupProfileIconsTitle.value = profileIconsTitle.textContent;
 }
 
-function hideEditProfilePopup() {
-    popupForm.classList.remove("popup_opened");
+function openModal(element){
+    element.classList.add("popup_opened");
+}
+function closeModal(element){
+    element.classList.remove("popup_opened");
 }
 
-function showAddPlacePopup() {
-    popupAddPlaceForm.classList.add("popup_opened");
-}
-
-function hideAddPlacePopup() {
-    popupAddPlaceForm.classList.remove("popup_opened");
-}
-
-function showPreviewImage(img) {
+function showPreviewImage(imgPopup,captionName) {
     imagePopup.classList.add("popup_opened");
-    const popupImg = document.querySelector(".popup__card-image-preview").src = img;
-}
-
-function hidePreviewImage() {
-    imagePopup.classList.remove("popup_opened");
+    const popupImg = document.querySelector(".popup__card-image-preview").src = imgPopup;
+    const popupImgName = document.querySelector(".popup__card-image-preview-name").textContent = captionName;
+    
 }
 
 function clearForm() {
     popupPlaceName.value = '';
     popupPlaceUrl.value = '';
 }
-function deletePlace() {
-    popupPlaceName.value = '';
-    popupPlaceUrl.value = '';
-}
+
 //submit profile
 function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = popupProfileName.value;
-    proficonstitle.textContent = popupProfIconsTitle.value;
+    profileIconsTitle.textContent = popupProfileIconsTitle.value;
     hideEditProfilePopup();
 }
-
-
 
 //submit new place
 function submitAddPlaceForm(evt) {
@@ -111,17 +101,19 @@ function submitAddPlaceForm(evt) {
 
     placeElementAdd.querySelector(".card__trash").addEventListener("click", ()=>{
         place.remove();
+        //check to see if there are any places listed
         if (placeList.textContent.trim().length == '') {
-            noPlaceFound.classList.add("cards__no-songs_active");
+            noPlaceFound.classList.add("cards__no-places_active");
 
         } else {
-            noPlaceFound.classList.remove("cards__no-songs_active");
+            noPlaceFound.classList.remove("cards__no-places_active");
         }
     }
     );
-    noPlaceFound.classList.remove("cards__no-songs_active");
+    //remove no places found class on adding a new place
+    noPlaceFound.classList.remove("cards__no-places_active");
     placeList.prepend(placeElementAdd);
-    hideAddPlacePopup();
+    closeModal(popupAddPlaceForm);
     clearForm();
 }
 
@@ -132,39 +124,39 @@ initialplaces.forEach(function(card) {
     const place = placeElement.querySelector(".card");
     //get title element
     placeElement.querySelector(".card__place-name").textContent = card.name;
-    const img = placeElement.querySelector(".card__image").src = card.link;
+    const imgPopup = placeElement.querySelector(".card__image").src = card.link;
+    const captionName = placeElement.querySelector(".card__place-name").textContent = card.name;
     placeElement.querySelector(".card__place-favorite").addEventListener("click", function(evt) {
         evt.target.classList.toggle("card__place-favorite_active")
     });
     placeElement.querySelector(".card__trash").addEventListener("click", ()=>{
         place.remove();
+        //check to see if there are any places listed
         if (placeList.textContent.trim().length == '') {
-            noPlaceFound.classList.add("cards__no-songs_active");
+            noPlaceFound.classList.add("cards__no-places_active");
 
         } else {
-            noPlaceFound.classList.remove("cards__no-songs_active");
+            noPlaceFound.classList.remove("cards__no-places_active");
         }
     }
     );
-
     placeElement.querySelector(".card__image").addEventListener("click", ()=>{
-        showPreviewImage(img);
+        showPreviewImage(imgPopup,captionName);
     }
     );
-
     placeList.prepend(placeElement);
 });
 //profile edit
 editProfileOpenBtn.addEventListener('click', showEditProfilePopup);
-editProfileCloseBtn.addEventListener('click', hideEditProfilePopup);
+editProfileCloseBtn.addEventListener('click', ()=> closeModal(popupForm));
 submit.addEventListener("submit", submitEditProfileForm);
 
 //add place
-addPlacesOpenBtn.addEventListener('click', showAddPlacePopup);
-addPlaceCloseBtn.addEventListener('click', hideAddPlacePopup);
+addPlacesOpenBtn.addEventListener("click", ()=> openModal(popupAddPlaceForm));
+addPlaceCloseBtn.addEventListener("click", ()=> closeModal(popupAddPlaceForm));
 submitNewPlace.addEventListener("submit", submitAddPlaceForm);
 
 //image preview
-viewImageCloseBtn.addEventListener("click", ()=>{ hidePreviewImage();});
+viewImageCloseBtn.addEventListener("click", ()=> closeModal(imagePopup));
 
 

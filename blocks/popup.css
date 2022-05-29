@@ -146,10 +146,18 @@ text-align: center;
     max-width:75vw;
     max-height:75vh;
 }
-
+.popup__card-image-preview-name{
+font-weight:400;
+font-size:12px;
+line-height:14.52px;
+color:#fff;
+}
 @media screen and (max-width: 540px) {
     .popup__form{
         padding:25px 22px 25px 22px;
+    }
+    .popup__form_image{
+    padding:0;
     }
     .popup__close-btn{
         right:0;
