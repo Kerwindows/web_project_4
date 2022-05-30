@@ -32,7 +32,7 @@ const imagePopup = document.querySelector("#view__image");
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
-const initialplaces = [{
+const initialPlaces = [{
     name: "Tobago",
     link: "https://th.bing.com/th/id/OIP.AfQeN6j8IHA1QwQV1LAhMgHaE8?pid=ImgDet&rs=1"
 }, {
@@ -53,14 +53,10 @@ const initialplaces = [{
 }];
 /* --------------------------------- popups --------------------------------- */
 
-function showEditProfilePopup() {
-    popupForm.classList.add("popup_opened");
-    popupProfileName.value = profileName.textContent;
-    popupProfileIconsTitle.value = profileIconsTitle.textContent;
-}
-
 function openModal(element){
     element.classList.add("popup_opened");
+    popupProfileName.value = profileName.textContent;
+    popupProfileIconsTitle.value = profileIconsTitle.textContent;
 }
 function closeModal(element){
     element.classList.remove("popup_opened");
@@ -68,14 +64,13 @@ function closeModal(element){
 
 function showPreviewImage(imgPopup,captionName) {
     imagePopup.classList.add("popup_opened");
-    const popupImg = document.querySelector(".popup__card-image-preview").src = imgPopup;
-    const popupImgName = document.querySelector(".popup__card-image-preview-name").textContent = captionName;
-    
+    document.querySelector(".popup__card-image-preview").src = imgPopup;
+    document.querySelector(".popup__card-image-preview-name").textContent = captionName;
 }
 
-function clearForm() {
-    popupPlaceName.value = '';
-    popupPlaceUrl.value = '';
+function clearAddPlace() {
+    popupPlaceName.value = "";
+    popupPlaceUrl.value = "";
 }
 
 //submit profile
@@ -102,7 +97,7 @@ function submitAddPlaceForm(evt) {
     placeElementAdd.querySelector(".card__trash").addEventListener("click", ()=>{
         place.remove();
         //check to see if there are any places listed
-        if (placeList.textContent.trim().length == '') {
+        if (placeList.textContent.trim().length == "") {
             noPlaceFound.classList.add("cards__no-places_active");
 
         } else {
@@ -114,11 +109,11 @@ function submitAddPlaceForm(evt) {
     noPlaceFound.classList.remove("cards__no-places_active");
     placeList.prepend(placeElementAdd);
     closeModal(popupAddPlaceForm);
-    clearForm();
+    clearAddPlace();
 }
 
 //display places from array object
-initialplaces.forEach(function(card) {
+initialPlaces.forEach(function(card) {
     //clone card template
     const placeElement = placeTemplate.cloneNode(true);
     const place = placeElement.querySelector(".card");
@@ -132,7 +127,7 @@ initialplaces.forEach(function(card) {
     placeElement.querySelector(".card__trash").addEventListener("click", ()=>{
         place.remove();
         //check to see if there are any places listed
-        if (placeList.textContent.trim().length == '') {
+        if (placeList.textContent.trim().length == "") {
             noPlaceFound.classList.add("cards__no-places_active");
 
         } else {
@@ -147,8 +142,8 @@ initialplaces.forEach(function(card) {
     placeList.prepend(placeElement);
 });
 //profile edit
-editProfileOpenBtn.addEventListener('click', showEditProfilePopup);
-editProfileCloseBtn.addEventListener('click', ()=> closeModal(popupForm));
+editProfileOpenBtn.addEventListener("click", ()=> openModal(popupForm));
+editProfileCloseBtn.addEventListener("click", ()=> closeModal(popupForm));
 submit.addEventListener("submit", submitEditProfileForm);
 
 //add place
