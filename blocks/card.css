@@ -42,7 +42,7 @@
   background-image: url(../images/heart.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  width:21px;
+  min-width:21px;
   height:19px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
