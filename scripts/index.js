@@ -4,16 +4,16 @@ const profileName = document.querySelector(".profile__edit-name");
 const profileIconsTitle = document.querySelector(".profile__about-me");
 const popupForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
-const popupProfileName = document.querySelector(".js__input_type_profile-name");
-const popupProfileIconsTitle = document.querySelector(".js__input_type_profile-about-me");
+const popupProfileName = document.querySelector(".js-input-type-profile-name");
+const popupProfileIconsTitle = document.querySelector(".js-input-type-profile-about-me");
 const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
 const popupAddPlaceForm = document.querySelector("#add__place");
 const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
 const addPlaceCloseBtn = document.querySelector(".popup__place-close-btn");
 const submitPlace = document.querySelector(".popup__place-form");
-const popupPlaceName = document.querySelector(".js__input_type_place-name");
-const popupPlaceUrl = document.querySelector(".js__input_type_place-url");
+const popupPlaceName = document.querySelector(".js-input-type-place-name");
+const popupPlaceUrl = document.querySelector(".js-input-type-place-url");
 const submitNewPlace = document.querySelector(".popup__place-form");
 const noPlaceFound = document.querySelector(".cards__no-places");
 /* ----------------------------- Generate Cards ----------------------------- */
@@ -145,13 +145,13 @@ viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
 /* ------------------------------- validation ------------------------------- */
 const showInputError = (formElement, inputElement, errorMessage) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-	inputElement.classList.add("popup__input_type_error");
+	inputElement.classList.add("popup__form-input_type_error");
 	errorElement.textContent = errorMessage;
 	errorElement.classList.add("popup__error_visible");
 };
 const hideInputError = (formElement, inputElement) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-	inputElement.classList.remove("popup__input_type_error");
+	inputElement.classList.remove("popup__form-input_type_error");
 	errorElement.classList.remove("popup__error_visible");
 	errorElement.textContent = "";
 };
@@ -168,7 +168,7 @@ const hasInvalidInput = (inputList) => {
 	});
 };
 const setEventListeners = (formElement) => {
-	const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
+	const inputList = Array.from(formElement.querySelectorAll(".popup__form-input"));
 	const buttonElement = formElement.querySelector(".popup__button");
 	toggleButtonState(inputList, buttonElement);
 	inputList.forEach((inputElement) => {
