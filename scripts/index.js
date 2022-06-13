@@ -4,16 +4,16 @@ const profileName = document.querySelector(".profile__edit-name");
 const profileIconsTitle = document.querySelector(".profile__about-me");
 const popupForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
-const popupProfileName = document.querySelector(".popup__form-input_type_profile-name");
-const popupProfileIconsTitle = document.querySelector(".popup__form-input_type_profile-about-me");
+const popupProfileName = document.querySelector(".js__input_type_profile-name");
+const popupProfileIconsTitle = document.querySelector(".js__input_type_profile-about-me");
 const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
 const popupAddPlaceForm = document.querySelector("#add__place");
 const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
 const addPlaceCloseBtn = document.querySelector(".popup__place-close-btn");
 const submitPlace = document.querySelector(".popup__place-form");
-const popupPlaceName = document.querySelector(".popup__input_type_place-name");
-const popupPlaceUrl = document.querySelector(".popup__input_type_place-link");
+const popupPlaceName = document.querySelector(".js__input_type_place-name");
+const popupPlaceUrl = document.querySelector(".js__input_type_place-url");
 const submitNewPlace = document.querySelector(".popup__place-form");
 const noPlaceFound = document.querySelector(".cards__no-places");
 /* ----------------------------- Generate Cards ----------------------------- */
