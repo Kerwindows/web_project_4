@@ -145,13 +145,13 @@ viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
 /* ------------------------------- validation ------------------------------- */
 const showInputError = (formElement, inputElement, errorMessage) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-	inputElement.classList.add("popup__form-input-type_error");
+	inputElement.classList.add("popup__input-type_error");
 	errorElement.textContent = errorMessage;
 	errorElement.classList.add("popup__error_visible");
 };
 const hideInputError = (formElement, inputElement) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-	inputElement.classList.remove("popup__form-input-type_error");
+	inputElement.classList.remove("popup__input-type_error");
 	errorElement.classList.remove("popup__error_visible");
 	errorElement.textContent = "";
 };
