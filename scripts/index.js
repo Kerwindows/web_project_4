@@ -12,8 +12,8 @@ const popupAddPlaceForm = document.querySelector("#add__place");
 const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
 const addPlaceCloseBtn = document.querySelector(".popup__place-close-btn");
 const submitPlace = document.querySelector(".popup__place-form");
-const popupPlaceName = document.querySelector(".popup__form-input_type_place-name");
-const popupPlaceUrl = document.querySelector(".popup__form-input_type_place-link");
+const popupPlaceName = document.querySelector(".popup__input_type_place-name");
+const popupPlaceUrl = document.querySelector(".popup__input_type_place-link");
 const submitNewPlace = document.querySelector(".popup__place-form");
 const noPlaceFound = document.querySelector(".cards__no-places");
 /* ----------------------------- Generate Cards ----------------------------- */
