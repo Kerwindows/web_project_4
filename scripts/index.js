@@ -4,8 +4,8 @@ const profileName = document.querySelector(".profile__edit-name");
 const profileIconsTitle = document.querySelector(".profile__about-me");
 const popupForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
-const popupProfileName = document.querySelector(".popup__input-type_profile-name");
-const popupProfileIconsTitle = document.querySelector(".popup__input-type_profile-about-me");
+const popupProfileName = document.querySelector(".popup__form-input_type_profile-name");
+const popupProfileIconsTitle = document.querySelector(".popup__form-input_type_profile-about-me");
 const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
 const popupAddPlaceForm = document.querySelector("#add__place");
