@@ -7,7 +7,6 @@ const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
 const popupProfileName = document.querySelector(".popup__form-input_type_profile-name");
 const popupProfileIconsTitle = document.querySelector(".popup__form-input_type_profile-about-me");
 const submitProfileEdit = document.querySelector(".popup__edit-form");
-// profileIconsTitle => profileIconsTitle
 /* -------------------------------- add place ------------------------------- */
 const popupAddPlaceForm = document.querySelector("#add__place");
 const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
@@ -55,7 +54,7 @@ function closeModal(popupElement) {
 function showPreviewImage({
 	name, link
 }) {
-	// add open class to popup
+
 	openModal(imagePopup);
 	const imageElement = document.querySelector(".popup__card-image-preview");
 	imageElement.src = link;
@@ -67,7 +66,7 @@ function clearAddPlace() {
 	popupPlaceName.value = "";
 	popupPlaceUrl.value = "";
 }
-//submit profile
+
 function submitEditProfileForm(evt) {
 	evt.preventDefault();
 	profileName.textContent = popupProfileName.value;
@@ -76,7 +75,7 @@ function submitEditProfileForm(evt) {
 }
 const handleDeleteButton = () => {
 	cardElement.remove();
-	//check to see if there are any places listed
+
 	if(placeList.childNodes.length) {
 		noPlaceFound.classList.remove("cards__no-places_active");
 	} else {
@@ -86,21 +85,21 @@ const handleDeleteButton = () => {
 const handleLikeButton = (evt) => {
 	evt.target.classList.toggle("card__place-favorite_active");
 };
-// cardData = {name: ..., link: ...}
+
 function generateCardElement(cardData) {
 	const cardElement = htmlCardsTemplate.cloneNode(true);
-	// add title to card
+
 	cardElement.querySelector(".card__place-name").textContent = cardData.name;
 	// add src and alt to image
 	const imageElement = cardElement.querySelector(".card__image");
 	imageElement.src = cardData.link;
 	imageElement.alt = cardData.name;
-	// add click listener for like button
+
 	cardElement.querySelector(".card__place-favorite").addEventListener("click", handleLikeButton);
-	// add listener for delete button
+	
 	const deleteButton = cardElement.querySelector(".card__trash");
 	deleteButton.addEventListener("click", handleDeleteButton);
-	// add click listener to image element
+
 	cardElement.querySelector(".card__image").addEventListener("click", () => {
 		showPreviewImage(cardData);
 	});
@@ -110,7 +109,7 @@ function generateCardElement(cardData) {
 function addCard(cardElement, container) {
 	container.prepend(cardElement);
 }
-//submit new place
+
 function submitAddPlaceForm(evt) {
 	evt.preventDefault();
 	const name = popupPlaceName.value;
@@ -118,18 +117,18 @@ function submitAddPlaceForm(evt) {
 	const cardElement = generateCardElement({
 		name, link
 	});
-	//remove no places found class on adding a new place
+
 	noPlaceFound.classList.remove("cards__no-places_active");
 	addCard(cardElement, placeList);
 	closeModal(popupAddPlaceForm);
 	clearAddPlace();
 }
-//display places from array object
+
 initialPlaces.forEach(function(cardData) {
 	const cardElement = generateCardElement(cardData);
 	addCard(cardElement, placeList);
 });
-//profile edit
+
 editProfileOpenBtn.addEventListener("click", () => {
 	popupProfileName.value = profileName.textContent;
 	popupProfileIconsTitle.value = profileIconsTitle.textContent;
