@@ -96,7 +96,7 @@ cursor:pointer;
     line-height: 29px;
     margin:0 0 41px;
 }
-.popup__input{
+.popup__form-input{
     max-width:358px;
     width:100%;
     border:none;
@@ -141,7 +141,6 @@ text-align: center;
     box-shadow: none;
 
 }
-
 .popup__card-image-preview {
     width: 100%;
     max-width:75vw;
@@ -155,13 +154,14 @@ line-height:14.52px;
 color:#fff;
 }
 .popup__button_disabled{
-background:#eee;
+background:#E5E5E5;
+color:#000;
 
 }
 .popup__error_visible {
     opacity: 1;
 }
-.popup__input_type_error {
+.popup__form-input_type_error {
     font-size: 12px;
     color: red;
     margin-bottom: 0;
