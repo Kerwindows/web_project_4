@@ -158,7 +158,14 @@ color:#fff;
 background:#eee;
 
 }
-
+.popup__error_visible {
+    opacity: 1;
+}
+.popup__input_type_error {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 0;
+}
 @media screen and (max-width: 540px) {
     .popup__form-card{
         padding:25px 22px 25px 22px;
