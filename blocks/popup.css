@@ -131,7 +131,7 @@ text-align: center;
     opacity: 0.8;
     cursor:pointer;
 }
-.popup__form_image{
+.popup__form-image{
     background:none;
     max-width:75vw;
     max-height:75vh;
@@ -161,7 +161,7 @@ color:#000;
 .popup__error_visible {
     opacity: 1;
 }
-.popup__form_input_type_error {
+.popup__form-input-type_error {
     font-size: 12px;
     color: red;
     margin-bottom: 0;
@@ -170,7 +170,7 @@ color:#000;
     .popup__form-card{
         padding:25px 22px 25px 22px;
     }
-    .popup__form_image{
+    .popup__form-image{
     padding:0;
     }
     .popup__close-btn{
