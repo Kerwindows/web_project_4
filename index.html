@@ -49,33 +49,33 @@
         <!-- ---------------------------- edit profile ----------------------------- -->
         <div id="edit__profile" class="popup">
             <div class="popup__overlay"></div>
-                <div class="popup__form">
+                <div class="popup__form-card">
                     <button class="popup__close-btn popup__edit-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="popup__edit-form" name="profile-form">
+                    <form class="popup__edit-form popup__form" name="profile-form">
                         <h2 class="popup__form-label">Edit Profile</h2>
-                        <input class="popup__form-input popup__form-input_type_profile-name" name="profile-name" type="text" placeholder="Name" />
-                        <input class="popup__form-input popup__form-input_type_profile-about-me" name="profile-about-me" type="text" placeholder="About Me"/>
-                        <button class="popup__save-btn" type="submit">Save</button>
+                        <input id="name-input" minlength="2" maxlength='40' class="popup__input popup__form-input_type_profile-name" name="profile-name" type="text" placeholder="Name" value="Jacques Cousteau" required/><span class="popup__input_type_error name-input-error"></span>
+                        <input id="about-input" minlength="2" maxlength='200' class="popup__input popup__form-input_type_profile-about-me" name="profile-about-me" type="text" placeholder="About Me" value="Explorer" required/><span class="popup__input_type_error about-input-error"></span>
+                        <button class="popup__button" type="submit">Save</button>
                     </form>
             </div>
         </div>
         <!-- ------------------------------ add place ------------------------------ -->
         <div id='add__place' class="popup">
             <div class="popup__overlay"></div>
-                <div class="popup__form">
+                <div class="popup__form-card">
                     <button class="popup__close-btn popup__place-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="popup__place-form" name="profile-form">
+                    <form class="popup__place-form popup__form" name="add-place-form">
                         <h2 class="popup__form-label">Add Place</h2>
-                        <input class="popup__form-input popup__form-input_type_place-name" name="place-name" type="text" placeholder="Title" />
-                        <input class="popup__form-input popup__form-input_type_place-link" name="place-link" type="text" placeholder="Url Link"/>
-                        <button class="popup__save-btn" type="submit">Save</button>
+                        <input id='place_name-input' minlength="1" maxlength="10" class="popup__input popup__form-input_type_place-name" name="place-name" type="text" placeholder="Title" required/><span class="popup__input_type_error place_name-input-error"></span>
+                        <input id='place_url-input' class="popup__input popup__form-input_type_place-link" name="place-link" type="url" placeholder="Url Link" required/><span class="popup__input_type_error place_url-input-error"></span>
+                        <button class="popup__button " type="submit" >Save</button>
                     </form>
             </div>
         </div>
         <!------popup image-->
         <div id='view__image' class="popup">
             <div class="popup__overlay"></div>
-                <div class="popup__form popup__form_image">
+                <div class="popup__form-card popup__form_image">
                     <button class="popup__close-btn popup__image-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
                     <img class="popup__card-image-preview" src="./images/loader.png" alt="Photo of place" />
                     <p class="popup__card-image-preview-name">loading...</p>
@@ -94,5 +94,6 @@
             </li>
         </template>
         <script src="./scripts/index.js"></script>
+        <script src="./scripts/validation.js"></script>
     </body>
 </html>
