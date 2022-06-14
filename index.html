@@ -1,99 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Around the US" />
-        <meta name="keywords" content="Around the US" />
-        <meta name="author" content="Kerwin Thompson" />
-        <title>Around The U.S.</title>
-        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-        <link rel="stylesheet" href="./pages/index.css" />
-    </head>
-    <body class="body">
-        <div class="page">
-            <header class="header">
-               
-                    <img src="./images/logo.svg" alt="Homeland" class="header__logo" />
-              
-                
-            </header>
-            <main class="main">
-                <section class="profile">
-                        <img class="profile__image" src="./images/jacques.png" alt="Photo of place" />
-                   
-                    <div class="profile__edit-column">
-                        <div class="profile__edit">
-                            <h1 class="profile__edit-name">Jacques Cousteau</h1>
-                            <button class="profile__edit-btn" type="button"><img class="profile__edit-icon" src="./images/edit.svg" alt="Edit button" /></button>
-                        </div>
-                        <p class="profile__about-me">Explorer</p>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Around the US" />
+    <meta name="keywords" content="Around the US" />
+    <meta name="author" content="Kerwin Thompson" />
+    <title>Around The U.S.</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./pages/index.css" />
+</head>
+
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img src="./images/logo.svg" alt="Homeland" class="header__logo" />
+        </header>
+        <main class="main">
+            <section class="profile">
+                <img class="profile__image" src="./images/jacques.png" alt="Photo of place" />
+
+                <div class="profile__edit-column">
+                    <div class="profile__edit">
+                        <h1 class="profile__edit-name">Jacques Cousteau</h1>
+                        <button class="profile__edit-btn" type="button">
+                            <img class="profile__edit-icon" src="./images/edit.svg" alt="Edit button" />
+                        </button>
                     </div>
-                    
-                    <button class="profile__add-places-btn" type="button"><img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" /></button>
-                </section>
-                <section class="cards">
-                    <ul class="cards__list"></ul>
-                    <div class="cards__no-places">
-                        <p class="cards__no-places-text">No images to display</p>
-                      </div>
-                </section>
-            
-            </main>
-            <footer class="footer">
-                    <p class="footer__copyright">© 2022 Around The U.S.</p>
-            </footer>
-            
-        </div>
-        <!-- ---------------------------- edit profile ----------------------------- -->
-        <div id="edit__profile" class="popup">
-            <div class="popup__overlay"></div>
-                <div class="popup__form-card">
-                    <button class="popup__close-btn popup__edit-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="popup__edit-form popup__form" name="editProfileForm">
-                        <h2 class="popup__form-label">Edit Profile</h2>
-                        <input id="name-input" minlength="2" maxlength='40' class="popup__form-input js-input-type-profile-name" name="profile-name" type="text" placeholder="Name" value="Jacques Cousteau" required/><span class="popup__input-type-error name-input-error"></span>
-                        <input id="about-input" minlength="2" maxlength='200' class="popup__form-input js-input-type-profile-about-me" name="profile-about-me" type="text" placeholder="About Me" value="Explorer" required/><span class="popup__input-type-error about-input-error"></span>
-                        <button class="popup__button" type="submit">Save</button>
-                    </form>
-            </div>
-        </div>
-        <!-- ------------------------------ add place ------------------------------ -->
-        <div id='add__place' class="popup">
-            <div class="popup__overlay"></div>
-                <div class="popup__form-card">
-                    <button class="popup__close-btn popup__place-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <form class="popup__place-form popup__form" name="addPlaceForm">
-                        <h2 class="popup__form-label">Add Place</h2>
-                        <input id='js-input-place-name-input' minlength="1" maxlength="10" class="popup__form-input js-input-type-place-name" name="place-name" type="text" placeholder="Title" required/><span class="popup__input-type-error js-input-place-name-input-error"></span>
-                        <input id='js-input-place-url-input' class="popup__form-input js-input-type-place-url" name="place-link" type="url" placeholder="Url Link" required/><span class="popup__input-type-error js-input-place-url-input-error"></span>
-                        <button class="popup__button " type="submit" >Save</button>
-                    </form>
-            </div>
-        </div>
-        <!------popup image-->
-        <div id='view__image' class="popup">
-            <div class="popup__overlay"></div>
-                <div class="popup__form-card popup__form-image">
-                    <button class="popup__close-btn popup__image-close-btn" type="button"><img class="popup__close-icon" src="./images/close-icon.svg" alt=""></button>
-                    <img class="popup__card-image-preview" src="./images/loader.png" alt="Photo of place" />
-                    <p class="popup__card-image-preview-name">loading...</p>
-                  
-            </div>
-        </div>
-        <!-- ---------------------------- card template ---------------------------- -->
-        <template id="card-template">
-            <li class="card">
-                <img class="card__image" src="./images/loader.png" alt="Photo of place" />
-                <button class="card__trash" ><img class="card__trash-image" src="./images/Trash.svg" alt="Trash" /></button>
-                <div class="card__place-title">
-                    <h2 class="card__place-name">loading...</h2>
-                    <div class="card__place-favorite "></div>
+                    <p class="profile__about-me">Explorer</p>
                 </div>
-            </li>
-        </template>
-        <script src="./scripts/index.js"></script>
-        <script src="./scripts/validation.js"></script>
-    </body>
+
+                <button class="profile__add-places-btn" type="button">
+                    <img class="profile__add-places-icon" src="./images/plus-sign.svg" alt="Add place" />
+                </button>
+            </section>
+            <section class="cards">
+                <ul class="cards__list"></ul>
+                <div class="cards__no-places">
+                    <p class="cards__no-places-text">No images to display</p>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2022 Around The U.S.</p>
+        </footer>
+    </div>
+    <!-- ---------------------------- edit profile ----------------------------- -->
+    <div id="edit__profile" class="popup">
+        <div class="popup__overlay"></div>
+        <div class="popup__form-card">
+            <button class="popup__close-btn popup__edit-close-btn" type="button">
+                <img class="popup__close-icon" src="./images/close-icon.svg" alt="" />
+            </button>
+            <form class="popup__edit-form popup__form" name="editProfileForm">
+                <h2 class="popup__form-label">Edit Profile</h2>
+                <input id="name-input" minlength="2" maxlength="40" class="popup__form-input js-input-type-profile-name"
+                    name="profile-name" type="text" placeholder="Name" value="Jacques Cousteau" required /><span
+                    class="popup__input-type-error name-input-error"></span>
+                <input id="about-input" minlength="2" maxlength="200"
+                    class="popup__form-input js-input-type-profile-about-me" name="profile-about-me" type="text"
+                    placeholder="About Me" value="Explorer" required /><span
+                    class="popup__input-type-error about-input-error"></span>
+                <button class="popup__button" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <!-- ------------------------------ add place ------------------------------ -->
+    <div id="add__place" class="popup">
+        <div class="popup__overlay"></div>
+        <div class="popup__form-card">
+            <button class="popup__close-btn popup__place-close-btn" type="button">
+                <img class="popup__close-icon" src="./images/close-icon.svg" alt="" />
+            </button>
+            <form class="popup__place-form popup__form" name="addPlaceForm">
+                <h2 class="popup__form-label">Add Place</h2>
+                <input id="js-input-place-name-input" minlength="1" maxlength="10"
+                    class="popup__form-input js-input-type-place-name" name="place-name" type="text" placeholder="Title"
+                    required /><span class="popup__input-type-error js-input-place-name-input-error"></span>
+                <input id="js-input-place-url-input" class="popup__form-input js-input-type-place-url" name="place-link"
+                    type="url" placeholder="Url Link" required /><span
+                    class="popup__input-type-error js-input-place-url-input-error"></span>
+                <button class="popup__button" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <!------popup image-->
+    <div id="view__image" class="popup">
+        <div class="popup__overlay"></div>
+        <div class="popup__form-card popup__form-image">
+            <button class="popup__close-btn popup__image-close-btn" type="button">
+                <img class="popup__close-icon" src="./images/close-icon.svg" alt="" />
+            </button>
+            <img class="popup__card-image-preview" src="./images/loader.png" alt="Photo of place" />
+            <p class="popup__card-image-preview-name">loading...</p>
+        </div>
+    </div>
+    <!-- ---------------------------- card template ---------------------------- -->
+    <template id="card-template">
+        <li class="card">
+            <img class="card__image" src="./images/loader.png" alt="Photo of place" />
+            <button class="card__trash">
+                <img class="card__trash-image" src="./images/Trash.svg" alt="Trash" />
+            </button>
+            <div class="card__place-title">
+                <h2 class="card__place-name">loading...</h2>
+                <div class="card__place-favorite"></div>
+            </div>
+        </li>
+    </template>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
+</body>
+
 </html>
