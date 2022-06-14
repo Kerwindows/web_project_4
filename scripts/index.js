@@ -31,8 +31,7 @@ const imagePopupName = document.querySelector(
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
-const initialPlaces = [
-  {
+const initialPlaces = [{
     name: "Tobago",
     link: "https://th.bing.com/th/id/OIP.AfQeN6j8IHA1QwQV1LAhMgHaE8?pid=ImgDet&rs=1",
   },
@@ -70,7 +69,10 @@ function closeModal(popupElement) {
   popupElement.removeEventListener("mousedown", closePopupOnRemoteClick);
 }
 
-function showPreviewImage({ name, link }) {
+function showPreviewImage({
+  name,
+  link
+}) {
   openModal(imagePopup);
   const imageElement = document.querySelector(".popup__card-image-preview");
   imageElement.src = link;
@@ -139,7 +141,7 @@ function submitAddPlaceForm(evt) {
   addPlaceForm.reset();
   const inputList = [...addPlaceForm.querySelectorAll(".popup__form-input")];
   const buttonElement = addPlaceForm.querySelector(".popup__button");
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, validationConfig);
 }
 
 initialPlaces.forEach(function (cardData) {

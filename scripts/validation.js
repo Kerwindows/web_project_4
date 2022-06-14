@@ -22,7 +22,7 @@ const hideInputError = (formElement, inputElement, validationConfig) => {
   errorElement.textContent = "";
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, validationConfig) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, validationConfig);
   } else {
@@ -36,23 +36,23 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, validationConfig) => {
   const inputList = [
-    ...formElement.querySelectorAll(validationConfig.inputSelector),
+    ...formElement.querySelectorAll(validationConfig.inputSelector)
   ];
   const buttonElement = formElement.querySelector(
     validationConfig.submitButtonSelector
   );
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, validationConfig);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, validationConfig);
+      toggleButtonState(inputList, buttonElement, validationConfig);
     });
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, validationConfig) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationConfig.inactiveButtonClass);
     buttonElement.setAttribute("disabled", true);
@@ -62,15 +62,15 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const enableValidation = () => {
+const enableValidation = (validationConfig) => {
   const formList = [
-    ...document.querySelectorAll(validationConfig.formSelector),
+    ...document.querySelectorAll(validationConfig.formSelector)
   ];
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-    setEventListeners(formElement);
+    setEventListeners(formElement, validationConfig);
   });
 };
-enableValidation();
+enableValidation(validationConfig);
