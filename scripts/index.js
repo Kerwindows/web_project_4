@@ -1,3 +1,5 @@
+import FormValidator from "./FormValidator.js";
+
 /* ------------------------------ edit profile  ------------------------------ */
 const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__edit-name");
@@ -180,3 +182,17 @@ function closePopupOnRemoteClick(evt) {
     closeModal(evt.currentTarget);
   }
 }
+
+const validationConfig = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__form-input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input-type-error",
+    errorClass: "popup__error_visible",
+};
+  
+const submitProfileEditValidator = new FormValidator(validationConfig,submitProfileEdit);
+const submitNewPlaceValidator = new FormValidator(validationConfig,submitNewPlace);
+submitProfileEditValidator.enableValidation();
+submitNewPlaceValidator.enableValidation();
