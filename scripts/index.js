@@ -8,26 +8,20 @@ const profileIconsTitle = document.querySelector(".profile__about-me");
 const profileForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
 const popupProfileName = document.querySelector(".js-input-type-profile-name");
-const popupProfileIconsTitle = document.querySelector(
-  ".js-input-type-profile-about-me"
-);
+const popupProfileIconsTitle = document.querySelector(".js-input-type-profile-about-me");
 const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
 const addPlaceForm = document.forms.addPlaceForm;
 const popupAddPlaceForm = document.querySelector("#add__place");
 const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
 const addPlaceCloseBtn = document.querySelector(".popup__place-close-btn");
-const submitPlace = document.querySelector(".popup__place-form");
 const popupPlaceName = document.querySelector(".js-input-type-place-name");
 const popupPlaceUrl = document.querySelector(".js-input-type-place-url");
 const submitNewPlace = document.querySelector(".popup__place-form");
-const noPlaceFound = document.querySelector(".cards__no-places");
 /* ----------------------------- Generate Cards ----------------------------- */
 const placeList = document.querySelector(".cards__list");
-const htmlCardsTemplate = document.querySelector("#card-template").content.firstElementChild;
 /* ------------------------------ image preview ----------------------------- */
 const imagePopup = document.querySelector("#view__image");
-const imagePopupName = document.querySelector(".popup__card-image-preview-name");
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
@@ -103,10 +97,6 @@ function submitAddPlaceForm(evt) {
   renderCard(newCardElement.getView(), placeList);
   closeModal(popupAddPlaceForm);
   addPlaceForm.reset();
-}
-
-function addCard(cardElement, container) {
-  container.prepend(cardElement);
 }
 
 submitNewPlace.addEventListener("submit", submitAddPlaceForm);
