@@ -24,12 +24,10 @@ const submitNewPlace = document.querySelector(".popup__place-form");
 const noPlaceFound = document.querySelector(".cards__no-places");
 /* ----------------------------- Generate Cards ----------------------------- */
 const placeList = document.querySelector(".cards__list");
-const htmlCardsTemplate = document.querySelector("#card-template").content.firstElementChild;///getTemplate
+const htmlCardsTemplate = document.querySelector("#card-template").content.firstElementChild;
 /* ------------------------------ image preview ----------------------------- */
 const imagePopup = document.querySelector("#view__image");
-const imagePopupName = document.querySelector(
-  ".popup__card-image-preview-name"
-);
+const imagePopupName = document.querySelector(".popup__card-image-preview-name");
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
@@ -82,100 +80,34 @@ function closePopupOnRemoteClick(evt) {
   }
 }
 /* --------------------------------- Popup images --------------------------------- */
-/*function showPreviewImage({
-  name,
-  link
-}) {
-  
-  const imageElement = document.querySelector(".popup__card-image-preview");
-  imageElement.src = link;
-  imageElement.alt = name;
-  imagePopupName.textContent = name;
-}*/
-
-
-const showPreview = new Card(initialPlaces,imagePopup);
-showPreview.showPreviewImage();
-  
 
 viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
 
 
 /* --------------------------------- Cards --------------------------------- */
-/*const handleLikeButton = (evt) => {
-  evt.target.classList.toggle("card__place-favorite_active");
-};
-
-function generateCardElement(cardData) {
-  const cardElement = htmlCardsTemplate.cloneNode(true);///getTemplate
-
-  cardElement.querySelector(".card__place-name").textContent = cardData.name;
-  const imageElement = cardElement.querySelector(".card__image");
-  imageElement.src = cardData.link;
-  imageElement.alt = cardData.name;
-
-  cardElement.querySelector(".card__place-favorite")
-    .addEventListener("click", handleLikeButton);
-
-  const deleteButton = cardElement.querySelector(".card__trash");
-  deleteButton.addEventListener("click", () => {
-    handleDeleteButton(cardElement);
-  });
-
-  cardElement.querySelector(".card__image").addEventListener("click", () => {
-    showPreviewImage(cardData);
-  });
-  return cardElement;
+function renderCard(cardEl, container){
+  container.prepend(cardEl);
 }
 
-initialPlaces.forEach(function (cardData) {
-  const cardElement = generateCardElement(cardData);
-  addCard(cardElement, placeList);
-});//stay
-
-
-
-const handleDeleteButton = (cardElement) => {
-  cardElement.remove();
-  if (placeList.childNodes.length) {
-    noPlaceFound.classList.remove("cards__no-places_active");
-  } else {
-    noPlaceFound.classList.add("cards__no-places_active");
-  }
-};//handleDelete()
-
-*/
-
-
-const showCards = new Card(initialPlaces,"#card-template");
-showCards.getView();
-
+initialPlaces.forEach( (cardData) => {
+  const cardElement = new Card(cardData, "#card-template");
+  renderCard(cardElement.getView(), placeList);
+}); 
 
 /* --------------------------------- Places Form --------------------------------- */
-
-
 function submitAddPlaceForm(evt) {
   evt.preventDefault();
   const name = popupPlaceName.value;
   const link = popupPlaceUrl.value;
-  const cardElement = generateCardElement({
-    name,
-    link,
-  });
-
-  noPlaceFound.classList.remove("cards__no-places_active");
-  addCard(cardElement, placeList);
+  const newCardElement =  new Card({name,link}, "#card-template");
+  renderCard(newCardElement.getView(), placeList);
   closeModal(popupAddPlaceForm);
   addPlaceForm.reset();
-  const inputList = [...addPlaceForm.querySelectorAll(".popup__form-input")];
-  const buttonElement = addPlaceForm.querySelector(".popup__button");
-  toggleButtonState(inputList, buttonElement, validationConfig);
 }
 
 function addCard(cardElement, container) {
   container.prepend(cardElement);
 }
-
 
 submitNewPlace.addEventListener("submit", submitAddPlaceForm);
 addPlacesOpenBtn.addEventListener("click", () => openModal(popupAddPlaceForm));
