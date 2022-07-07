@@ -50,29 +50,7 @@ const initialPlaces = [{
     link: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   },
 ];
-/* --------------------------------- All popups --------------------------------- */
-function openModal(popupElement) {
-  popupElement.classList.add("popup_opened");
-  document.addEventListener("keydown", closeWithEsc);
-  popupElement.addEventListener("mousedown", closePopupOnRemoteClick);
-}
 
-function closeModal(popupElement) {
-  popupElement.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeWithEsc);
-  popupElement.removeEventListener("mousedown", closePopupOnRemoteClick);
-}
-function closeWithEsc(event) {
-  if (event.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    closeModal(openedPopup);
-  }
-}
-function closePopupOnRemoteClick(evt) {
-  if (evt.target.classList.contains("popup__overlay")) {
-    closeModal(evt.currentTarget);
-  }
-}
 /* --------------------------------- Popup images --------------------------------- */
 
 viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
@@ -83,20 +61,40 @@ function renderCard(cardEl, container){
   container.prepend(cardEl);
 }
 
+
+
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template");
+  return card.getView();
+}
+
+
 initialPlaces.forEach( (cardData) => {
-  const cardElement = new Card(cardData, "#card-template");
-  renderCard(cardElement.getView(), placeList);
+  const cardElement = createCard(cardData);
+  renderCard(cardElement, placeList); 
+ 
 }); 
+
+
+
+/*const cardElement = createCard(cardData);
+renderCard(cardElement, placeList) */
+
+
 
 /* --------------------------------- Places Form --------------------------------- */
 function submitAddPlaceForm(evt) {
   evt.preventDefault();
   const name = popupPlaceName.value;
   const link = popupPlaceUrl.value;
-  const newCardElement =  new Card({name,link}, "#card-template");
-  renderCard(newCardElement.getView(), placeList);
+  const newCardElement =  createCard({name,link});
+  renderCard(newCardElement, placeList);
   closeModal(popupAddPlaceForm);
   addPlaceForm.reset();
+  console.log(newCardElement);
+  //newCardElement.toggleButtonState()
+  
+
 }
 
 submitNewPlace.addEventListener("submit", submitAddPlaceForm);
@@ -137,9 +135,9 @@ const validationConfig = {
     errorClass: "popup__error_visible",
 };
  
-const submitProfileEditValidator = new FormValidator(validationConfig,submitProfileEdit);
+const placesFormValidator = new FormValidator(validationConfig,submitProfileEdit);
 const submitNewPlaceValidator = new FormValidator(validationConfig,submitNewPlace);
-submitProfileEditValidator.enableValidation();
+placesFormValidator.enableValidation();
 submitNewPlaceValidator.enableValidation();
 
 
