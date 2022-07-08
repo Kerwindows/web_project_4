@@ -8,7 +8,9 @@ const profileIconsTitle = document.querySelector(".profile__about-me");
 const profileForm = document.querySelector("#edit__profile");
 const editProfileCloseBtn = document.querySelector(".popup__edit-close-btn");
 const popupProfileName = document.querySelector(".js-input-type-profile-name");
-const popupProfileIconsTitle = document.querySelector(".js-input-type-profile-about-me");
+const popupProfileIconsTitle = document.querySelector(
+  ".js-input-type-profile-about-me"
+);
 const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
 const addPlaceForm = document.forms.addPlaceForm;
@@ -25,7 +27,8 @@ const imagePopup = document.querySelector("#view__image");
 const viewImageCloseBtn = document.querySelector(".popup__image-close-btn");
 
 /* --------------------------------- places --------------------------------- */
-const initialPlaces = [{
+const initialPlaces = [
+  {
     name: "Tobago",
     link: "https://th.bing.com/th/id/OIP.AfQeN6j8IHA1QwQV1LAhMgHaE8?pid=ImgDet&rs=1",
   },
@@ -55,46 +58,32 @@ const initialPlaces = [{
 
 viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
 
-
 /* --------------------------------- Cards --------------------------------- */
-function renderCard(cardEl, container){
+function renderCard(cardEl, container) {
   container.prepend(cardEl);
 }
-
-
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template");
   return card.getView();
 }
 
-
-initialPlaces.forEach( (cardData) => {
+initialPlaces.forEach((cardData) => {
   const cardElement = createCard(cardData);
-  renderCard(cardElement, placeList); 
- 
-}); 
-
-
-
-/*const cardElement = createCard(cardData);
-renderCard(cardElement, placeList) */
-
-
+  renderCard(cardElement, placeList);
+});
 
 /* --------------------------------- Places Form --------------------------------- */
 function submitAddPlaceForm(evt) {
   evt.preventDefault();
   const name = popupPlaceName.value;
   const link = popupPlaceUrl.value;
-  const newCardElement =  createCard({name,link});
+  const newCardElement = createCard({ name, link });
   renderCard(newCardElement, placeList);
   closeModal(popupAddPlaceForm);
   addPlaceForm.reset();
   console.log(newCardElement);
-  //newCardElement.toggleButtonState()
-  
-
+  placesFormValidator.toggleButtonState();
 }
 
 submitNewPlace.addEventListener("submit", submitAddPlaceForm);
@@ -109,12 +98,10 @@ function submitEditProfileForm(evt) {
   closeModal(profileForm);
 }
 
-
 editProfileOpenBtn.addEventListener("click", () => {
   fillProfileForm();
   openModal(profileForm);
 });
-
 
 const fillProfileForm = () => {
   popupProfileName.value = profileName.textContent;
@@ -124,20 +111,20 @@ const fillProfileForm = () => {
 editProfileCloseBtn.addEventListener("click", () => closeModal(profileForm));
 submitProfileEdit.addEventListener("submit", submitEditProfileForm);
 
-
 /* --------------------------------- Verification --------------------------------- */
 const validationConfig = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__form-input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input-type-error",
-    errorClass: "popup__error_visible",
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input-type-error",
+  errorClass: "popup__error_visible",
 };
- 
-const placesFormValidator = new FormValidator(validationConfig,submitProfileEdit);
-const submitNewPlaceValidator = new FormValidator(validationConfig,submitNewPlace);
+
+const profileFormValidator = new FormValidator(
+  validationConfig,
+  submitProfileEdit
+);
+const placesFormValidator = new FormValidator(validationConfig, submitNewPlace);
 placesFormValidator.enableValidation();
-submitNewPlaceValidator.enableValidation();
-
-
+profileFormValidator.enableValidation();
