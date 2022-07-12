@@ -75,7 +75,6 @@ function createCard(cardData) {
         .classList.add("cards__no-places_active");
     }
   });
-  //onCardRemoved();
   return card.getView();
 }
 

@@ -1,11 +1,11 @@
 import { openModal} from "./utils.js";
 
 class Card {
-  constructor(data, cardSelector, onDelete) {
+  constructor(data, cardSelector, onCardRemoved) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._onDelete = onDelete;
+    this._onCardRemoved = onCardRemoved;
   }
 
   
@@ -17,7 +17,7 @@ class Card {
   _handleDeleteButton = () => {
     this._cardElement.remove();
     this._cardElement = null;
-    this._onDelete();
+    this._onCardRemoved();
     
   };
 
