@@ -1,15 +1,14 @@
 import { openModal} from "./utils.js";
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, onDelete) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._onDelete = onDelete;
   }
 
-  openModal(popupElement) {
-    popupElement.classList.add("popup_opened");
-  }
+  
 
   _handleLikeButton = (evt) => {
     evt.target.classList.toggle("card__place-favorite_active");
@@ -18,6 +17,8 @@ class Card {
   _handleDeleteButton = () => {
     this._cardElement.remove();
     this._cardElement = null;
+    this._onDelete();
+    
   };
 
   _setEventListeners() {
@@ -55,7 +56,7 @@ class Card {
   }
 
   _showPreviewImage() {
-    this.openModal(document.querySelector("#view__image"));
+    openModal(document.querySelector("#view__image"));
     const imageElement = document.querySelector(".popup__card-image-preview");
 
     imageElement.src = this._link;

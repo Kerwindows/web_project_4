@@ -64,7 +64,17 @@ function renderCard(cardEl, container) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template",() => {
+    if (document.querySelector(".cards__list").childNodes.length) {
+      document
+        .querySelector(".cards__no-places")
+        .classList.remove("cards__no-places_active");
+    } else {
+      document
+        .querySelector(".cards__no-places")
+        .classList.add("cards__no-places_active");
+    }
+  });
   //onCardRemoved();
   return card.getView();
 }
