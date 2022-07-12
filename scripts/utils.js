@@ -22,5 +22,4 @@ function closePopupOnRemoteClick(evt) {
   }
 }
 
-
-export { openModal, closeModal}
+export { openModal, closeModal };

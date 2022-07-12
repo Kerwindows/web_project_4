@@ -1,6 +1,6 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
-import { openModal, closeModal} from "./utils.js";
+import { openModal, closeModal } from "./utils.js";
 
 /* ------------------------------ edit profile  ------------------------------ */
 const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
@@ -64,7 +64,7 @@ function renderCard(cardEl, container) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template",() => {
+  const card = new Card(cardData, "#card-template", () => {
     if (document.querySelector(".cards__list").childNodes.length) {
       document
         .querySelector(".cards__no-places")
@@ -82,7 +82,6 @@ initialPlaces.forEach((cardData) => {
   const cardElement = createCard(cardData);
   renderCard(cardElement, placeList);
 });
-
 
 /* --------------------------------- Places Form --------------------------------- */
 function submitAddPlaceForm(evt) {

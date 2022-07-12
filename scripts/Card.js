@@ -1,4 +1,4 @@
-import { openModal} from "./utils.js";
+import { openModal } from "./utils.js";
 
 class Card {
   constructor(data, cardSelector, onCardRemoved) {
@@ -8,8 +8,6 @@ class Card {
     this._onCardRemoved = onCardRemoved;
   }
 
-  
-
   _handleLikeButton = (evt) => {
     evt.target.classList.toggle("card__place-favorite_active");
   };
@@ -18,7 +16,6 @@ class Card {
     this._cardElement.remove();
     this._cardElement = null;
     this._onCardRemoved();
-    
   };
 
   _setEventListeners() {
