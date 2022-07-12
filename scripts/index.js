@@ -1,5 +1,6 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
+import { openModal, closeModal} from "./utils.js";
 
 /* ------------------------------ edit profile  ------------------------------ */
 const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
@@ -55,7 +56,6 @@ const initialPlaces = [
 ];
 
 /* --------------------------------- Popup images --------------------------------- */
-
 viewImageCloseBtn.addEventListener("click", () => closeModal(imagePopup));
 
 /* --------------------------------- Cards --------------------------------- */
@@ -65,6 +65,7 @@ function renderCard(cardEl, container) {
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template");
+  //onCardRemoved();
   return card.getView();
 }
 
@@ -72,6 +73,7 @@ initialPlaces.forEach((cardData) => {
   const cardElement = createCard(cardData);
   renderCard(cardElement, placeList);
 });
+
 
 /* --------------------------------- Places Form --------------------------------- */
 function submitAddPlaceForm(evt) {
@@ -82,7 +84,6 @@ function submitAddPlaceForm(evt) {
   renderCard(newCardElement, placeList);
   closeModal(popupAddPlaceForm);
   addPlaceForm.reset();
-  console.log(newCardElement);
   placesFormValidator.toggleButtonState();
 }
 

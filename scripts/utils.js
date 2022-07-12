@@ -21,3 +21,6 @@ function closePopupOnRemoteClick(evt) {
     closeModal(evt.currentTarget);
   }
 }
+
+
+export { openModal, closeModal}

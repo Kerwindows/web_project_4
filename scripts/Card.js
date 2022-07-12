@@ -1,3 +1,5 @@
+import { openModal} from "./utils.js";
+
 class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -5,7 +7,7 @@ class Card {
     this._cardSelector = cardSelector;
   }
 
-  _openPreview(popupElement) {
+  openModal(popupElement) {
     popupElement.classList.add("popup_opened");
   }
 
@@ -16,15 +18,6 @@ class Card {
   _handleDeleteButton = () => {
     this._cardElement.remove();
     this._cardElement = null;
-    if (document.querySelector(".cards__list").childNodes.length) {
-      document
-        .querySelector(".cards__no-places")
-        .classList.remove("cards__no-places_active");
-    } else {
-      document
-        .querySelector(".cards__no-places")
-        .classList.add("cards__no-places_active");
-    }
   };
 
   _setEventListeners() {
@@ -62,7 +55,7 @@ class Card {
   }
 
   _showPreviewImage() {
-    this._openPreview(document.querySelector("#view__image"));
+    this.openModal(document.querySelector("#view__image"));
     const imageElement = document.querySelector(".popup__card-image-preview");
 
     imageElement.src = this._link;
