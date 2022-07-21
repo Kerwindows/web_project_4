@@ -9,6 +9,7 @@ function closeModal(popupElement) {
   popupElement.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeWithEsc);
   popupElement.removeEventListener("mousedown", closePopupOnRemoteClick);
+  console.log('something fishy');
 }
 function closeWithEsc(event) {
   if (event.key === "Escape") {

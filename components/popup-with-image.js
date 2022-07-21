@@ -11,6 +11,10 @@ class PopupWithImage extends Popup {
     document.querySelector(".popup__card-image-preview-name").textContent = name;
     super.open();
   }
+
+  close(popupSelector){
+    super.close();
+  }
 }
 
 export default PopupWithImage;
