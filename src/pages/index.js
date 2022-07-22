@@ -54,7 +54,6 @@ const submitAddPlaceForm = evt => {
 
   const newCardElement = createCard({ name, link });
   addNewCard.close();
-  addNewCard.resetForm();
   placesFormValidator.toggleButtonState();
 };
 

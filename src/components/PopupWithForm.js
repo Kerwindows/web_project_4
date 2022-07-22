@@ -24,29 +24,23 @@ export default class PopupWithForm extends Popup {
     this._inputList.forEach(input => {
       this._objData[input.name] = input.value;
     });
-    console.log("_objData", this._objData);
+
     return this._objData;
   }
 
   setInputValues(data) {
     this._inputObj = {};
-    console.log("this", this);
+
     this._inputList.forEach(input => {
-      console.log(input.value);
       this._inputObj[input.name] = input.value;
     });
-    console.log("_inputObj", this._inputObj);
+
     return this._inputObj;
-    //   profileNameInput.textContent = popupProfileName.value;
-    //   profileOccupationInput.textContent = popupProfileIconsTitle.value;
   }
 
   close() {
     super.close();
     this._submitButton.textContent = "Save";
-  }
-
-  resetForm() {
     this._form.reset();
   }
 
