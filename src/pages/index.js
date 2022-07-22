@@ -10,14 +10,14 @@ import {
   placeList,
   addPopupSelector,
   editProfileOpenBtn,
-  profileNameInput,
-  profileOccupationInput,
-  popupProfileName,
-  popupProfileIconsTitle,
   submitProfileEdit,
   addPlacesOpenBtn,
   popupPlaceName,
   popupPlaceUrl,
+  popupProfileName,
+  profileNameInput,
+  popupProfileIconsTitle,
+  profileOccupationInput,
   submitNewPlace,
   editPopupSelector,
   profileName,
@@ -25,9 +25,7 @@ import {
   validationConfig
 } from "../utils/constants.js";
 
-/* --------------------------------- function for rendering card on load --------------------------------- */
-
-function createCard(cardData) {
+const createCard = cardData => {
   const card = new Card(
     cardData,
     "#card-template",
@@ -47,26 +45,20 @@ function createCard(cardData) {
     }
   );
   return card.getView();
-}
+};
 
-function submitAddPlaceForm(evt) {
+const submitAddPlaceForm = evt => {
   evt.preventDefault();
   const name = popupPlaceName.value;
   const link = popupPlaceUrl.value;
 
   const newCardElement = createCard({ name, link });
   addNewCard.close();
+  addNewCard.resetForm();
   placesFormValidator.toggleButtonState();
-}
+};
 
-function submitEditProfileForm(evt) {
-  evt.preventDefault();
-  profileNameInput.textContent = popupProfileName.value;
-  profileOccupationInput.textContent = popupProfileIconsTitle.value;
-  editFormPopup.close();
-}
-
-/*--------------------------------------------*/
+/*-------------------- Cards -------------------*/
 const cardList = new Section(
   {
     items: initialPlaces,
@@ -85,7 +77,7 @@ const handleCardClick = item => {
   previewImagePopup.open(item.name, item.link);
 };
 
-/*------------------------------------------------------------------*/
+/*-------------------------Card Form---------------------------------*/
 const addNewCard = new PopupWithForm(addPopupSelector, {
   handleFormSubmit: data => {
     cardList.addItem(createCard(data));
@@ -98,7 +90,7 @@ addPlacesOpenBtn.addEventListener("click", () => {
   addNewCard.open();
 });
 
-/* --------------------------------- Profile Form --------------------------------- */
+/* ------- Profile Form -----------*/
 
 const newUserInfo = new UserInfo({
   nameSelector: profileName,
@@ -107,17 +99,18 @@ const newUserInfo = new UserInfo({
 
 const editFormPopup = new PopupWithForm(editPopupSelector, {
   handleFormSubmit: data => {
-    newUserInfo.setUserInfo(data);
-    profileFormValidator.toggleButtonState();
+    editFormPopup.setInputValues(newUserInfo.setUserInfo(data));
+    // profileFormValidator.toggleButtonState();
+    editFormPopup.close();
   }
 });
-editFormPopup.setEventListeners();
 
 editProfileOpenBtn.addEventListener("click", () => {
   editFormPopup.open();
+  popupProfileName.value = profileNameInput.textContent;
+  popupProfileIconsTitle.value = profileOccupationInput.textContent;
+  editFormPopup.setEventListeners();
 });
-
-submitProfileEdit.addEventListener("submit", submitEditProfileForm);
 
 /* --------------------------------- Verification --------------------------------- */
 const profileFormValidator = new FormValidator(
