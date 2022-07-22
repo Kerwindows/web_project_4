@@ -32,7 +32,7 @@ class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-       this._showPreviewImage();
+        this.handleCardClick({ link:this._link, name:this._name});
       });
   }
 
@@ -53,17 +53,6 @@ class Card {
     return this._cardElement;
   }
 
-
-  _showPreviewImage() {
-    this.handleCardClick({ link:this._link, name:this._name});
-
-    // openModal(document.querySelector("#view__image"));
-    // const imageElement = document.querySelector(".popup__card-image-preview");
-    // imageElement.src = this._link;
-    // imageElement.alt = this._name;
-    // document.querySelector(".popup__card-image-preview-name").textContent = this._name;
-
-  }
 }
 
 export default Card;
