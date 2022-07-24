@@ -44,20 +44,22 @@ const createCard = cardData => {
       }
     }
   );
+
   return card.getView();
 };
 
-const submitAddPlaceForm = evt => {
-  evt.preventDefault();
-  const name = popupPlaceName.value;
-  const link = popupPlaceUrl.value;
+// const submitAddPlaceForm = evt => {
+//   evt.preventDefault();
+//   const name = popupPlaceName.value;
+//   const link = popupPlaceUrl.value;
 
-  const newCardElement = createCard({ name, link });
-  addNewCard.close();
-  placesFormValidator.toggleButtonState();
-};
+//   const newCardElement = createCard({ name, link });
+//   addNewCard.close();
+//   placesFormValidator.toggleButtonState();
+// };
 
 /*-------------------- Cards -------------------*/
+//section called cardList created for cards
 const cardList = new Section(
   {
     items: initialPlaces,
@@ -79,14 +81,16 @@ const handleCardClick = item => {
 /*-------------------------Card Form---------------------------------*/
 const addNewCard = new PopupWithForm(addPopupSelector, {
   handleFormSubmit: data => {
+    //create card and add to card list section
     cardList.addItem(createCard(data));
+    addNewCard.close();
   }
 });
 addNewCard.setEventListeners();
 
-submitNewPlace.addEventListener("submit", submitAddPlaceForm);
 addPlacesOpenBtn.addEventListener("click", () => {
   addNewCard.open();
+  placesFormValidator.resetValidation();
 });
 
 /* ------- Profile Form -----------*/
@@ -98,17 +102,22 @@ const newUserInfo = new UserInfo({
 
 const editFormPopup = new PopupWithForm(editPopupSelector, {
   handleFormSubmit: data => {
-    editFormPopup.setInputValues(newUserInfo.setUserInfo(data));
-    // profileFormValidator.toggleButtonState();
+    // editFormPopup.setInputValues(data);
+    newUserInfo.setUserInfo(data);
     editFormPopup.close();
   }
 });
 
+
+
 editProfileOpenBtn.addEventListener("click", () => {
   editFormPopup.open();
+
+  const {name, occupation} = newUserInfo.getUserInfo();
+
   popupProfileName.value = profileNameInput.textContent;
   popupProfileIconsTitle.value = profileOccupationInput.textContent;
-  editFormPopup.setEventListeners();
+  profileFormValidator.resetValidation();
 });
 
 /* --------------------------------- Verification --------------------------------- */
@@ -119,3 +128,4 @@ const profileFormValidator = new FormValidator(
 const placesFormValidator = new FormValidator(validationConfig, submitNewPlace);
 placesFormValidator.enableValidation();
 profileFormValidator.enableValidation();
+editFormPopup.setEventListeners();

@@ -19,23 +19,42 @@ export default class PopupWithForm extends Popup {
     });
   }
 
+
+  submitAddPlaceForm = evt => {
+    evt.preventDefault();
+    // const name = popupPlaceName.value;
+    // const link = popupPlaceUrl.value;  
+    const newCardElement = createCard({ name, link });
+    this.close();
+    placesFormValidator.toggleButtonState();
+  };
+
+
   _getInputValues() {
     this._objData = {};
     this._inputList.forEach(input => {
       this._objData[input.name] = input.value;
     });
-
     return this._objData;
   }
 
+  // setInputValues(data) {
+  //   this._inputObj = {};
+  //   this._inputList.forEach(input => {
+  //     this._inputObj[input.name] = input.value;
+  //   });
+  //   return this._inputObj;
+  // }
+
   setInputValues(data) {
-    this._inputObj = {};
-
-    this._inputList.forEach(input => {
-      this._inputObj[input.name] = input.value;
+    this._objInput = {};
+    this._inputList.forEach((input) => {
+      console.log(data)
+      // here you insert the `value` by the `name` of the input
+      this._objInput[input.name] = data[input.value];
+      //input.value = data[input.name];
+     // return this._objInput;
     });
-
-    return this._inputObj;
   }
 
   close() {

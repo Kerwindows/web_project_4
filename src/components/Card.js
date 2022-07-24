@@ -18,7 +18,7 @@ class Card {
     this._cardElement = null;
     this._onCardRemoved();
   };
-
+//runs 3rd
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__place-favorite")
@@ -35,13 +35,13 @@ class Card {
         this.handleCardClick({ link:this._link, name:this._name});
       });
   }
-
+//runs 2nd
   _getTemplate() {
     return document
       .querySelector(this._cardSelector)
       .content.firstElementChild.cloneNode(true); ///_getTemplate
   }
-
+//runs 1st
   getView() {
     this._cardElement = this._getTemplate();
     this._cardElement.querySelector(".card__place-name").textContent = this._name;
