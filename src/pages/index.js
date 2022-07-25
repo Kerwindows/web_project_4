@@ -25,6 +25,7 @@ import {
   validationConfig
 } from "../utils/constants.js";
 
+/*-------------------- Cards -------------------*/
 const createCard = cardData => {
   const card = new Card(
     cardData,
@@ -48,17 +49,6 @@ const createCard = cardData => {
   return card.getView();
 };
 
-// const submitAddPlaceForm = evt => {
-//   evt.preventDefault();
-//   const name = popupPlaceName.value;
-//   const link = popupPlaceUrl.value;
-
-//   const newCardElement = createCard({ name, link });
-//   addNewCard.close();
-//   placesFormValidator.toggleButtonState();
-// };
-
-/*-------------------- Cards -------------------*/
 //section called cardList created for cards
 const cardList = new Section(
   {
@@ -69,16 +59,14 @@ const cardList = new Section(
   },
   placeList
 );
-cardList.renderItems();
 
 const previewImagePopup = new PopupWithImage("#view__image");
-previewImagePopup.setEventListeners();
 
 const handleCardClick = item => {
   previewImagePopup.open(item.name, item.link);
 };
 
-/*-------------------------Card Form---------------------------------*/
+/*-----------------------New Card Submit Form---------------------------------*/
 const addNewCard = new PopupWithForm(addPopupSelector, {
   handleFormSubmit: data => {
     //create card and add to card list section
@@ -86,14 +74,13 @@ const addNewCard = new PopupWithForm(addPopupSelector, {
     addNewCard.close();
   }
 });
-addNewCard.setEventListeners();
 
 addPlacesOpenBtn.addEventListener("click", () => {
   addNewCard.open();
   placesFormValidator.resetValidation();
 });
 
-/* ------- Profile Form -----------*/
+/*-----------------------Edit Profile Submit Form---------------------------------*/
 
 const newUserInfo = new UserInfo({
   nameSelector: profileName,
@@ -102,21 +89,17 @@ const newUserInfo = new UserInfo({
 
 const editFormPopup = new PopupWithForm(editPopupSelector, {
   handleFormSubmit: data => {
-    // editFormPopup.setInputValues(data);
     newUserInfo.setUserInfo(data);
     editFormPopup.close();
   }
 });
 
-
-
 editProfileOpenBtn.addEventListener("click", () => {
-  editFormPopup.open();
-
-  const {name, occupation} = newUserInfo.getUserInfo();
-
   popupProfileName.value = profileNameInput.textContent;
   popupProfileIconsTitle.value = profileOccupationInput.textContent;
+  editFormPopup.open();
+  //const { name, occupation } = newUserInfo.getUserInfo();
+  
   profileFormValidator.resetValidation();
 });
 
@@ -126,6 +109,10 @@ const profileFormValidator = new FormValidator(
   submitProfileEdit
 );
 const placesFormValidator = new FormValidator(validationConfig, submitNewPlace);
+
+cardList.renderItems();
 placesFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 editFormPopup.setEventListeners();
+previewImagePopup.setEventListeners();
+addNewCard.setEventListeners();
