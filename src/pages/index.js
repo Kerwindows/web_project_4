@@ -98,8 +98,7 @@ editProfileOpenBtn.addEventListener("click", () => {
   popupProfileName.value = profileNameInput.textContent;
   popupProfileIconsTitle.value = profileOccupationInput.textContent;
   editFormPopup.open();
-  //const { name, occupation } = newUserInfo.getUserInfo();
-  
+  //const { name, occupation } = newUserInfo.getUserInfo();  
   profileFormValidator.resetValidation();
 });
 
