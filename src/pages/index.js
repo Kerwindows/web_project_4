@@ -95,10 +95,10 @@ const editFormPopup = new PopupWithForm(editPopupSelector, {
 });
 
 editProfileOpenBtn.addEventListener("click", () => {
-  popupProfileName.value = profileNameInput.textContent;
-  popupProfileIconsTitle.value = profileOccupationInput.textContent;
+  const { name, occupation } = newUserInfo.getUserInfo();
+  popupProfileName.value = name;
+  popupProfileIconsTitle.value = occupation;
   editFormPopup.open();
-  //const { name, occupation } = newUserInfo.getUserInfo();  
   profileFormValidator.resetValidation();
 });
 
