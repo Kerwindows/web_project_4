@@ -19,13 +19,6 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  submitAddPlaceForm = evt => {
-    evt.preventDefault();
-    const newCardElement = createCard({ name, link });
-    this.close();
-    placesFormValidator.toggleButtonState();
-  };
-
   _getInputValues() {
     this._objData = {};
     this._inputList.forEach(input => {
