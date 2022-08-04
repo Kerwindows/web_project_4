@@ -106,7 +106,9 @@
     line-height: 29px;
     margin: 0 0 41px;
 }
-
+.popup__form-label-delete-confirmation{
+    margin: 0;
+}
 .popup__form-input {
     max-width: 358px;
     width: 100%;

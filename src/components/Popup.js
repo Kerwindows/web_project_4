@@ -23,6 +23,16 @@ export default class Popup {
     }
   }
 
+
+  renderSaving(isSaving, loadingText = "Saving...") {
+    if (isSaving) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
+
+
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();

@@ -24,12 +24,12 @@
 
                 <div class="profile__edit-column">
                     <div class="profile__edit">
-                        <h1 class="profile__edit-name">Jacques Cousteau</h1>
+                        <h1 class="profile__edit-name"></h1>
                         <button class="profile__edit-btn" type="button">
                             <img class="profile__edit-icon" src="<%=require('./images/edit.svg')%>" alt="Edit button" />
                         </button>
                     </div>
-                    <p class="profile__about-me">Explorer</p>
+                    <p class="profile__about-me"></p>
                 </div>
 
                 <button class="profile__add-places-btn" type="button">
@@ -86,6 +86,19 @@
             </form>
         </div>
     </div>
+    <!-- ------------------------------ delete confirmation ------------------------------ -->
+    <div id="delete-popup" class="popup">
+        <div class="popup__overlay"></div>
+        <div class="popup__form-card">
+            <button class="popup__close-btn popup__place-close-btn" type="button">
+                <img class="popup__close-icon" src="<%=require('./images/close-icon.svg')%>" alt="" />
+            </button>
+            <form class="popup__delete-form popup__form" name="deleteCard">
+                <h2 class="popup__form-label popup__form-label-delete-confirmation">Are you sure?</h2>
+                <button class="popup__button" type="submit">Yes</button>
+            </form>
+        </div>
+    </div>
     <!------popup image-->
     <div id="view__image" class="popup">
         <div class="popup__overlay"></div>
@@ -106,7 +119,10 @@
             </button>
             <div class="card__place-title">
                 <h2 class="card__place-name">loading...</h2>
-                <div class="card__place-favorite"></div>
+                <div class="card__place-container">
+                    <button type="button" class="card__place-favorite"></button>
+                    <p class="card__place-num">0</p>
+                </div>
             </div>
         </li>
     </template>
