@@ -5,7 +5,6 @@ class Api {
   }
 
   _handleResponse(res) {
-    console.log(res);
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 

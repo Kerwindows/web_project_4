@@ -20,10 +20,10 @@ export const popupPlaceName = document.querySelector(
 );
 export const popupPlaceUrl = document.querySelector(".js-input-type-place-url");
 export const submitNewPlace = document.querySelector(".popup__place-form");
-/*------------------------------ delete ---------------------------------------*/
-// export const deleteCard = document.querySelector(
-//   ".profile__add-places-btn"
-// );
+/*------------------------------ edit profile pic---------------------------------------*/
+export const editProfilePicButton = document.querySelector(
+  ".profile__image-edit-btn"
+);
 /* ----------------------------- Generate Cards ----------------------------- */
 export const placeList = document.querySelector(".cards__list");
 /* ------------------------------ image preview ----------------------------- */

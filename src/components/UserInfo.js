@@ -3,7 +3,6 @@ export default class UserInfo {
     this._name = document.querySelector(nameSelector);
     this._occupation = document.querySelector(jobSelector);
     this._profilePic = document.querySelector(profilePicSelector);
-    console.log
   }
 
   getUserInfo() {
