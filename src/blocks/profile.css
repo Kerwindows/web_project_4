@@ -162,6 +162,7 @@
 	transition: 0.3s;
 	opacity: 0;
 }
+
 .profile__image-edit:hover {
 	opacity: 1;
 }

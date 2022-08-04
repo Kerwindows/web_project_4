@@ -52,7 +52,7 @@
 	-o-transition: 0.2s;
 	transition: 0.2s;
 	color: transparent;
-	border:none;
+	border: none;
 }
 
 .card__place-favorite:hover {
@@ -81,8 +81,9 @@
 .card:hover .card__trash {
 	opacity: 1;
 }
+
 .card__place-num {
-	color:#000;
+	color: #000;
 	margin: 0;
 	text-align: center;
 	font-size: 13px;

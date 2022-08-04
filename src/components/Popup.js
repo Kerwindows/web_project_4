@@ -23,16 +23,6 @@ export default class Popup {
     }
   }
 
-
-  renderSaving(isSaving, loadingText = "Saving...") {
-    if (isSaving) {
-      this._submitButton.textContent = loadingText;
-    } else {
-      this._submitButton.textContent = this._submitButtonText;
-    }
-  }
-
-
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();
@@ -42,5 +32,13 @@ export default class Popup {
     this._popup
       .querySelector(".popup__close-btn")
       .addEventListener("click", () => this.close());
+  }
+
+  renderSaving(isSaving, loadingText = "Saving...") {
+    if (isSaving) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 }

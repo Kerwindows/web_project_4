@@ -16,7 +16,7 @@ class PopupWithDelete extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", (e) => {
+    this._form.addEventListener("submit", e => {
       e.preventDefault();
       this._handleSubmit(this._card);
     });

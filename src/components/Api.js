@@ -24,13 +24,13 @@ class Api {
     }).then((res) => this._handleResponse(res));
   }
 
-  setUserInfo({ name, occupation }) {
+  setUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: occupation,
+        about: about,
       }),
     }).then((res) => this._handleResponse(res));
   }
@@ -57,6 +57,15 @@ class Api {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
+    }).then((res) => this._handleResponse(res));
+  }
+  updateProfilePic({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
     }).then((res) => this._handleResponse(res));
   }
 
