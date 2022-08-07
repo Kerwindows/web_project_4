@@ -26,9 +26,9 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupWithDelete from "../components/PopupWithDelete.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import FormValidator from "../components/FormValidator.js";
-const deletePopup = new PopupWithDelete(
+const deletePopup = new PopupWithConfirmation(
   "#delete-popup",
   handleDeleteConfirmation
 );
@@ -36,56 +36,43 @@ deletePopup.setEventListeners();
 
 /*---------------delete card------------------*/
 addPlacesOpenBtn.addEventListener("click", () => {
-  addNewCard.open();
+  addNewCardPopup.open();
   placesFormValidator.resetValidation();
 });
 
 /*-------------------- Cards -------------------*/
-const createCard = cardData => {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    () => {
-      handleCardClick(cardData);
-    },
-    () => {
-      deletePopup.open(card);
-    },
-    () => {
-      toggleLike(card);
-    }
-  );
 
-  return card.getView();
-};
+let userId;
 
 api
   .initialize()
   .then(res => {
-    const [user, data] = res;
+    const [user, cardsData] = res;
     const cardList = new Section(
       {
-        items: data,
+        items: cardsData,
         renderer: item => {
-          let userId = user._id;
+          userId = user._id;
           cardList.addItem(
             createCard({
               name: item.name,
               link: item.link,
               likes: item.likes,
               owner: item.owner,
-              _id: item._id,
-              userId
+              _id: item._id
             })
           );
         }
       },
       placeList
     );
+    console.log(cardList);
     cardList.renderItems();
-    newUserInfo.setUserInfo({
+    userInfo.setUserInfo({
       name: user.name,
-      about: user.about,
+      about: user.about
+    });
+    userInfo.setUserAvatar({
       avatar: user.avatar
     });
   })
@@ -94,25 +81,24 @@ api
   });
 
 const previewImagePopup = new PopupWithImage("#view__image");
-
 const handleCardClick = item => {
   previewImagePopup.open(item.name, item.link);
 };
 
 /*-----------------------New Card Submit Form---------------------------------*/
-const addNewCard = new PopupWithForm(addPopupSelector, {
+const addNewCardPopup = new PopupWithForm(addPopupSelector, {
   handleFormSubmit: data => {
     addACard(data);
   }
 });
 
 addPlacesOpenBtn.addEventListener("click", () => {
-  addNewCard.open();
+  addNewCardPopup.open();
   placesFormValidator.resetValidation();
 });
 
 /*-----------------------Edit Profile Submit Form---------------------------------*/
-const newUserInfo = new UserInfo({
+const userInfo = new UserInfo({
   nameSelector: profileName,
   jobSelector: profileJob,
   profilePicSelector: profilePicSelector
@@ -125,7 +111,7 @@ const editFormPopup = new PopupWithForm(editPopupSelector, {
 });
 
 editProfileOpenBtn.addEventListener("click", () => {
-  const { name, about } = newUserInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();
   popupProfileName.value = name;
   popupProfileIconsTitle.value = about;
   editFormPopup.open();
@@ -158,7 +144,7 @@ profileFormValidator.enableValidation();
 profilePicFormValidator.enableValidation();
 editFormPopup.setEventListeners();
 previewImagePopup.setEventListeners();
-addNewCard.setEventListeners();
+addNewCardPopup.setEventListeners();
 
 function handleDeleteConfirmation(card) {
   deletePopup.renderSaving(true);
@@ -166,7 +152,7 @@ function handleDeleteConfirmation(card) {
     .deleteCard(card.getCardId())
     .then(() => {
       // delete card from DOM
-      card.getElement().remove();
+      card.removeCard();
       deletePopup.close();
     })
     .catch(err => {
@@ -179,7 +165,7 @@ function handleDeleteConfirmation(card) {
 
 const toggleLike = card => {
   api
-    .toggleLike(card._id, card.isLiked())
+    .toggleLike(card.getCardId(), card.isLiked())
     .then(likes => {
       card.updateLikes(likes.likes);
     })
@@ -193,11 +179,11 @@ const editProfile = data => {
   api
     .setUserInfo(data)
     .then(data => {
-      newUserInfo.setUserInfo({
+      userInfo.setUserInfo({
         name: data.name,
-        about: data.about,
-        avatar: data.avatar
+        about: data.about
       });
+      editFormPopup.close();
     })
     .catch(err => {
       console.log(err);
@@ -205,12 +191,11 @@ const editProfile = data => {
     .finally(() => {
       editFormPopup.renderSaving(false);
     });
-  newUserInfo.setUserInfo({
-    name: data.name,
-    about: data.about,
-    avatar: data.avatar
-  });
-  editFormPopup.close();
+  // userInfo.setUserInfo({
+  //   name: data.name,
+  //   about: data.about,
+  //   avatar: data.avatar
+  // });
 };
 
 const addACard = data => {
@@ -220,6 +205,7 @@ const addACard = data => {
     .then(res => {
       const newCard = createCard(res);
       placeList.prepend(newCard);
+      addNewCardPopup.close();
     })
     .catch(err => {
       console.log(err);
@@ -227,7 +213,6 @@ const addACard = data => {
     .finally(() => {
       editFormPopup.renderSaving(false);
     });
-  addNewCard.close();
 };
 
 const changeProfileImage = data => {
@@ -235,11 +220,10 @@ const changeProfileImage = data => {
   api
     .updateProfilePic(data)
     .then(data => {
-      newUserInfo.setUserInfo({
-        name: data.name,
-        about: data.about,
+      userInfo.setUserAvatar({
         avatar: data.avatar
       });
+      editPofilePicForm.close();
     })
     .catch(err => {
       console.log(err);
@@ -247,5 +231,23 @@ const changeProfileImage = data => {
     .finally(() => {
       editPofilePicForm.renderSaving(false);
     });
-  editPofilePicForm.close();
+};
+
+const createCard = cardData => {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    () => {
+      handleCardClick(cardData);
+    },
+    () => {
+      deletePopup.open(card);
+    },
+    () => {
+      toggleLike(card);
+    },
+    userId
+  );
+
+  return card.getView();
 };

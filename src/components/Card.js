@@ -4,7 +4,8 @@ class Card {
     cardSelector,
     handleCardClick,
     handleDeleteButton,
-    handleLikeButton
+    handleLikeButton,
+    userId
   ) {
     this.handleCardClick = handleCardClick;
     this._handleDeleteButton = handleDeleteButton;
@@ -14,13 +15,13 @@ class Card {
     this._link = data.link;
     this._likes = data.likes;
     this._ownerId = data.owner._id;
-    this._userId = data.userId;
     this._id = data._id;
+    this._userId = userId;
   }
 
-  _handleLikeButton = evt => {
-    evt.target.classList.toggle("card__place-favorite_active");
-  };
+  // _handleLikeButton = evt => {
+  //   evt.target.classList.toggle("card__place-favorite_active");
+  // };
 
   // _handleDeleteButton = () => {
   //   this._cardElement.remove();
@@ -69,8 +70,8 @@ class Card {
       });
   }
 
-  getElement() {
-    return this._cardElement;
+  removeCard() {
+    return this._cardElement.remove();
   }
 
   //runs 2nd
@@ -88,13 +89,14 @@ class Card {
     const imageElement = this._cardElement.querySelector(".card__image");
     this._likesTotal = this._cardElement.querySelector(".card__place-num");
     this._trashButton = this._cardElement.querySelector(".card__trash");
+    this._setEventListeners();
     if (this._ownerId !== this._userId) {
       this._trashButton.remove();
     }
     this._renderLikes();
     imageElement.src = this._link;
     imageElement.alt = this._name;
-    this._setEventListeners();
+    
     return this._cardElement;
   }
 }
