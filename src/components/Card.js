@@ -19,12 +19,6 @@ class Card {
     this._userId = userId;
   }
 
-
-  // _handleDeleteButton = () => {
-  //   this._cardElement.remove();
-  //   this._cardElement = null;
-  // };
-
   updateLikes(likes) {
     this._likes = likes;
     this._renderLikes();
@@ -68,8 +62,8 @@ class Card {
   }
 
   removeCard() {
-     this._cardElement.remove();
-     return this._cardElement = null;
+    this._cardElement.remove();
+    return (this._cardElement = null);
   }
 
   //runs 2nd
@@ -88,13 +82,12 @@ class Card {
     this._likesTotal = this._cardElement.querySelector(".card__place-num");
     this._trashButton = this._cardElement.querySelector(".card__trash");
     this._setEventListeners();
-    // if (this._ownerId !== this._userId) {
-    //   this._trashButton.remove();
-    // }
     this._renderLikes();
     imageElement.src = this._link;
     imageElement.alt = this._name;
-    
+    if (this._ownerId !== this._userId) {
+      this._trashButton.remove();
+    }
     return this._cardElement;
   }
 }

@@ -207,10 +207,13 @@
 	.profile__about-me {
 		text-align: center;
 	}
+
+	.profile__image-container {
+		margin: 0 auto;
+	}
 }
 
 @media screen and (max-width: 540px) {
-	.profile {}
 
 	.profile__edit-column {
 		margin: 0 auto;

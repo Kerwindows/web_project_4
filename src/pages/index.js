@@ -28,34 +28,25 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import FormValidator from "../components/FormValidator.js";
+let userId;
 
-const confirmationPopup = new PopupWithConfirmation(
-  "#delete-popup",
-  handleDeleteConfirmation
-);
+const confirmationPopup = new PopupWithConfirmation("#delete-popup", {
+  loadingButtonText: "Deleting..."
+});
 confirmationPopup.setEventListeners();
 
-/*---------------delete card------------------*/
+/*---------------Delete card------------------*/
 addPlacesOpenBtn.addEventListener("click", () => {
   addNewCardPopup.open();
   placesFormValidator.resetValidation();
 });
 
-// confirmationPopup.open(() => {
-//   card.removeCard();
-//   confirmationPopup.close();
-// });
-
-/*-------------------- Cards -------------------*/
-/*--------------------------------------*/
-let userId;
-
+/*----------------Display Cards----------------*/
 const renderCard = cardDataPlaceHolder => {
   const cardElement = createCard(cardDataPlaceHolder);
   cardList.addItem(cardElement);
 };
 
-// here we declare one global section instance
 const cardList = new Section(
   {
     renderer: renderCard
@@ -87,11 +78,17 @@ const handleCardClick = item => {
 };
 
 /*-----------------------New Card Submit Form---------------------------------*/
-const addNewCardPopup = new PopupWithForm(addPopupSelector, {
-  handleFormSubmit: data => {
-    addACard(data);
+const addNewCardPopup = new PopupWithForm(
+  addPopupSelector,
+  {
+    handleFormSubmit: data => {
+      addACard(data);
+    }
+  },
+  {
+    loadingButtonText: "Saving..."
   }
-});
+);
 
 addPlacesOpenBtn.addEventListener("click", () => {
   addNewCardPopup.open();
@@ -105,11 +102,17 @@ const userInfo = new UserInfo({
   profilePicSelector: profilePicSelector
 });
 
-const editFormPopup = new PopupWithForm(editPopupSelector, {
-  handleFormSubmit: data => {
-    editProfile(data);
+const editFormPopup = new PopupWithForm(
+  editPopupSelector,
+  {
+    handleFormSubmit: data => {
+      editProfile(data);
+    }
+  },
+  {
+    loadingButtonText: "Saving..."
   }
-});
+);
 
 editProfileOpenBtn.addEventListener("click", () => {
   const { name, about } = userInfo.getUserInfo();
@@ -119,11 +122,17 @@ editProfileOpenBtn.addEventListener("click", () => {
   profileFormValidator.resetValidation();
 });
 /*------------------------------------Profile picture edit--------------------------*/
-const editPofilePicForm = new PopupWithForm("#edit-profile-pic-popup", {
-  handleFormSubmit: data => {
-    changeProfileImage(data);
+const editPofilePicForm = new PopupWithForm(
+  "#edit-profile-pic-popup",
+  {
+    handleFormSubmit: data => {
+      changeProfileImage(data);
+    }
+  },
+  {
+    loadingButtonText: "Updating image..."
   }
-});
+);
 editPofilePicForm.setEventListeners();
 editProfilePicButton.addEventListener("click", () => {
   editPofilePicForm.open();
@@ -147,11 +156,15 @@ editFormPopup.setEventListeners();
 previewImagePopup.setEventListeners();
 addNewCardPopup.setEventListeners();
 
+/*------------------functions----------------------------*/
 function handleDeleteConfirmation(card) {
   confirmationPopup.renderSaving(true);
   api
     .deleteCard(card.getCardId())
-    .then(() => {})
+    .then(() => {
+      card.removeCard();
+      confirmationPopup.close();
+    })
     .catch(err => {
       console.log(err);
     })
@@ -188,29 +201,21 @@ const editProfile = data => {
     .finally(() => {
       editFormPopup.renderSaving(false);
     });
-  // userInfo.setUserInfo({
-  //   name: data.name,
-  //   about: data.about,
-  //   avatar: data.avatar
-  // });
 };
 
 const addACard = data => {
-  editFormPopup.renderSaving(true);
+  addNewCardPopup.renderSaving(true);
   api
     .addCard(data)
     .then(res => {
       renderCard(res);
-      // const newCard = createCard(res);
-      // placeList.prepend(newCard);
-
       addNewCardPopup.close();
     })
     .catch(err => {
       console.log(err);
     })
     .finally(() => {
-      editFormPopup.renderSaving(false);
+      addNewCardPopup.renderSaving(false);
     });
 };
 
@@ -240,10 +245,8 @@ const createCard = cardDataPlaceHolder => {
       handleCardClick(cardDataPlaceHolder);
     },
     () => {
-      confirmationPopup.open( () => {
+      confirmationPopup.open(() => {
         handleDeleteConfirmation(card);
-        card.removeCard();
-        confirmationPopup.close();
       });
     },
     () => {
