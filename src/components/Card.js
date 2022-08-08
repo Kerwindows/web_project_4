@@ -19,9 +19,6 @@ class Card {
     this._userId = userId;
   }
 
-  // _handleLikeButton = evt => {
-  //   evt.target.classList.toggle("card__place-favorite_active");
-  // };
 
   // _handleDeleteButton = () => {
   //   this._cardElement.remove();
@@ -71,7 +68,8 @@ class Card {
   }
 
   removeCard() {
-    return this._cardElement.remove();
+     this._cardElement.remove();
+     return this._cardElement = null;
   }
 
   //runs 2nd
@@ -90,9 +88,9 @@ class Card {
     this._likesTotal = this._cardElement.querySelector(".card__place-num");
     this._trashButton = this._cardElement.querySelector(".card__trash");
     this._setEventListeners();
-    if (this._ownerId !== this._userId) {
-      this._trashButton.remove();
-    }
+    // if (this._ownerId !== this._userId) {
+    //   this._trashButton.remove();
+    // }
     this._renderLikes();
     imageElement.src = this._link;
     imageElement.alt = this._name;

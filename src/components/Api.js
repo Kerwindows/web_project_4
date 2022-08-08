@@ -9,7 +9,11 @@ class Api {
   }
 
   initialize() {
-    return Promise.all([this.getUser(), this.getInitialCards()]);
+    return Promise.all([
+      this.getUser(), 
+      this.getInitialCards()
+    ]);
+    
   }
 
   getInitialCards() {

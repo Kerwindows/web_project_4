@@ -28,11 +28,12 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import FormValidator from "../components/FormValidator.js";
-const deletePopup = new PopupWithConfirmation(
+
+const confirmationPopup = new PopupWithConfirmation(
   "#delete-popup",
   handleDeleteConfirmation
 );
-deletePopup.setEventListeners();
+confirmationPopup.setEventListeners();
 
 /*---------------delete card------------------*/
 addPlacesOpenBtn.addEventListener("click", () => {
@@ -40,34 +41,34 @@ addPlacesOpenBtn.addEventListener("click", () => {
   placesFormValidator.resetValidation();
 });
 
-/*-------------------- Cards -------------------*/
+// confirmationPopup.open(() => {
+//   card.removeCard();
+//   confirmationPopup.close();
+// });
 
+/*-------------------- Cards -------------------*/
+/*--------------------------------------*/
 let userId;
+
+const renderCard = cardDataPlaceHolder => {
+  const cardElement = createCard(cardDataPlaceHolder);
+  cardList.addItem(cardElement);
+};
+
+// here we declare one global section instance
+const cardList = new Section(
+  {
+    renderer: renderCard
+  },
+  placeList
+);
 
 api
   .initialize()
   .then(res => {
     const [user, cardsData] = res;
-    const cardList = new Section(
-      {
-        items: cardsData,
-        renderer: item => {
-          userId = user._id;
-          cardList.addItem(
-            createCard({
-              name: item.name,
-              link: item.link,
-              likes: item.likes,
-              owner: item.owner,
-              _id: item._id
-            })
-          );
-        }
-      },
-      placeList
-    );
-    console.log(cardList);
-    cardList.renderItems();
+    userId = user._id;
+    cardList.renderItems(cardsData);
     userInfo.setUserInfo({
       name: user.name,
       about: user.about
@@ -147,19 +148,15 @@ previewImagePopup.setEventListeners();
 addNewCardPopup.setEventListeners();
 
 function handleDeleteConfirmation(card) {
-  deletePopup.renderSaving(true);
+  confirmationPopup.renderSaving(true);
   api
     .deleteCard(card.getCardId())
-    .then(() => {
-      // delete card from DOM
-      card.removeCard();
-      deletePopup.close();
-    })
+    .then(() => {})
     .catch(err => {
       console.log(err);
     })
     .finally(() => {
-      deletePopup.renderSaving(false);
+      confirmationPopup.renderSaving(false);
     });
 }
 
@@ -203,8 +200,10 @@ const addACard = data => {
   api
     .addCard(data)
     .then(res => {
-      const newCard = createCard(res);
-      placeList.prepend(newCard);
+      renderCard(res);
+      // const newCard = createCard(res);
+      // placeList.prepend(newCard);
+
       addNewCardPopup.close();
     })
     .catch(err => {
@@ -233,15 +232,19 @@ const changeProfileImage = data => {
     });
 };
 
-const createCard = cardData => {
+const createCard = cardDataPlaceHolder => {
   const card = new Card(
-    cardData,
+    cardDataPlaceHolder,
     "#card-template",
     () => {
-      handleCardClick(cardData);
+      handleCardClick(cardDataPlaceHolder);
     },
     () => {
-      deletePopup.open(card);
+      confirmationPopup.open( () => {
+        handleDeleteConfirmation(card);
+        card.removeCard();
+        confirmationPopup.close();
+      });
     },
     () => {
       toggleLike(card);

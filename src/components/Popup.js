@@ -34,11 +34,5 @@ export default class Popup {
       .addEventListener("click", () => this.close());
   }
 
-  renderSaving(isSaving, loadingText = "Saving...") {
-    if (isSaving) {
-      this._submitButton.textContent = loadingText;
-    } else {
-      this._submitButton.textContent = this._submitButtonText;
-    }
-  }
+ 
 }
