@@ -1,29 +1,17 @@
 export const editProfileOpenBtn = document.querySelector(".profile__edit-btn");
 export const profileNameInput = document.querySelector(".profile__edit-name");
-export const profileAboutInput = document.querySelector(
-  ".profile__about-me"
-);
-export const popupProfileName = document.querySelector(
-  ".js-input-type-profile-name"
-);
-export const popupProfileIconsTitle = document.querySelector(
-  ".js-input-type-profile-about-me"
-);
+export const profileAboutInput = document.querySelector(".profile__about-me");
+export const popupProfileName = document.querySelector(".js-input-type-profile-name");
+export const popupProfileIconsTitle = document.querySelector(".js-input-type-profile-about-me");
 export const profilePicSelector = ".profile__image";
 export const submitProfileEdit = document.querySelector(".popup__edit-form");
 /* -------------------------------- add place ------------------------------- */
-export const addPlacesOpenBtn = document.querySelector(
-  ".profile__add-places-btn"
-);
-export const popupPlaceName = document.querySelector(
-  ".js-input-type-place-name"
-);
+export const addPlacesOpenBtn = document.querySelector(".profile__add-places-btn");
+export const popupPlaceName = document.querySelector(".js-input-type-place-name");
 export const popupPlaceUrl = document.querySelector(".js-input-type-place-url");
 export const submitNewPlace = document.querySelector(".popup__place-form");
 /*------------------------------ edit profile pic---------------------------------------*/
-export const editProfilePicButton = document.querySelector(
-  ".profile__image-edit-btn"
-);
+export const editProfilePicButton = document.querySelector(".profile__image-edit-btn");
 export const submitNewProfilePic = document.querySelector(".popup__edit-profile-pic-form");
 /* ----------------------------- Generate Cards ----------------------------- */
 export const placeList = document.querySelector(".cards__list");

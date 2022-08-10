@@ -30,23 +30,19 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import FormValidator from "../components/FormValidator.js";
 let userId;
 
+/*---------------Delete card------------------*/
 const confirmationPopup = new PopupWithConfirmation("#delete-popup", {
   loadingButtonText: "Deleting..."
 });
 confirmationPopup.setEventListeners();
 
-/*---------------Delete card------------------*/
-addPlacesOpenBtn.addEventListener("click", () => {
-  addNewCardPopup.open();
-  placesFormValidator.resetValidation();
-});
-
-/*----------------Display Cards----------------*/
+/*----------------Render card function----------------*/
 const renderCard = cardDataPlaceHolder => {
   const cardElement = createCard(cardDataPlaceHolder);
   cardList.addItem(cardElement);
 };
 
+/*----------------Instantiate an object for placing cards into container that contains the cards----------------*/
 const cardList = new Section(
   {
     renderer: renderCard
@@ -54,30 +50,14 @@ const cardList = new Section(
   placeList
 );
 
-api
-  .initialize()
-  .then(res => {
-    const [user, cardsData] = res;
-    userId = user._id;
-    cardList.renderItems(cardsData);
-    userInfo.setUserInfo({
-      name: user.name,
-      about: user.about
-    });
-    userInfo.setUserAvatar({
-      avatar: user.avatar
-    });
-  })
-  .catch(err => {
-    console.log(err);
-  });
+/*----------------Instantiate object for showing popup image----------------*/
 
 const previewImagePopup = new PopupWithImage("#view__image");
 const handleCardClick = item => {
   previewImagePopup.open(item.name, item.link);
 };
 
-/*-----------------------New Card Submit Form---------------------------------*/
+/*-----------------------New Card Object ---------------------------------*/
 const addNewCardPopup = new PopupWithForm(
   addPopupSelector,
   {
@@ -90,6 +70,7 @@ const addNewCardPopup = new PopupWithForm(
   }
 );
 
+/*----------------Add Card event listener----------------*/
 addPlacesOpenBtn.addEventListener("click", () => {
   addNewCardPopup.open();
   placesFormValidator.resetValidation();
@@ -101,7 +82,7 @@ const userInfo = new UserInfo({
   jobSelector: profileJob,
   profilePicSelector: profilePicSelector
 });
-
+/*-----------------------New Popup Form object ---------------------------------*/
 const editFormPopup = new PopupWithForm(
   editPopupSelector,
   {
@@ -113,7 +94,7 @@ const editFormPopup = new PopupWithForm(
     loadingButtonText: "Saving..."
   }
 );
-
+/*----------------Edit Profile event listener----------------*/
 editProfileOpenBtn.addEventListener("click", () => {
   const { name, about } = userInfo.getUserInfo();
   popupProfileName.value = name;
@@ -133,110 +114,40 @@ const editPofilePicForm = new PopupWithForm(
     loadingButtonText: "Updating image..."
   }
 );
+
+/*----------------Edit profile picture event listener----------------*/
 editPofilePicForm.setEventListeners();
 editProfilePicButton.addEventListener("click", () => {
   editPofilePicForm.open();
   profilePicFormValidator.resetValidation();
 });
-/* --------------------------------- Verification --------------------------------- */
+
+/* ---------------------------------New Verification object for the profile form --------------------------------- */
 const profileFormValidator = new FormValidator(
   validationConfig,
   submitProfileEdit
 );
+/* ---------------------------------New Verification object for the add card form --------------------------------- */
 const placesFormValidator = new FormValidator(validationConfig, submitNewPlace);
+
+/* ---------------------------------New Verification object for the adding new profile pic form --------------------------------- */
 const profilePicFormValidator = new FormValidator(
   validationConfig,
   submitNewProfilePic
 );
-
+/*-------------------Call Verification object event listener for pupsubmiting--------------------------------*/
 placesFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 profilePicFormValidator.enableValidation();
+
+/*-------------------Call event listeners for popup with forms--------------------------------*/
 editFormPopup.setEventListeners();
-previewImagePopup.setEventListeners();
 addNewCardPopup.setEventListeners();
 
-/*------------------functions----------------------------*/
-function handleDeleteConfirmation(card) {
-  confirmationPopup.renderSaving(true);
-  api
-    .deleteCard(card.getCardId())
-    .then(() => {
-      card.removeCard();
-      confirmationPopup.close();
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    .finally(() => {
-      confirmationPopup.renderSaving(false);
-    });
-}
+/*-------------------Call event listeners for popup with preview --------------------------------*/
+previewImagePopup.setEventListeners();
 
-const toggleLike = card => {
-  api
-    .toggleLike(card.getCardId(), card.isLiked())
-    .then(likes => {
-      card.updateLikes(likes.likes);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-const editProfile = data => {
-  editFormPopup.renderSaving(true);
-  api
-    .setUserInfo(data)
-    .then(data => {
-      userInfo.setUserInfo({
-        name: data.name,
-        about: data.about
-      });
-      editFormPopup.close();
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    .finally(() => {
-      editFormPopup.renderSaving(false);
-    });
-};
-
-const addACard = data => {
-  addNewCardPopup.renderSaving(true);
-  api
-    .addCard(data)
-    .then(res => {
-      renderCard(res);
-      addNewCardPopup.close();
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    .finally(() => {
-      addNewCardPopup.renderSaving(false);
-    });
-};
-
-const changeProfileImage = data => {
-  editPofilePicForm.renderSaving(true);
-  api
-    .updateProfilePic(data)
-    .then(data => {
-      userInfo.setUserAvatar({
-        avatar: data.avatar
-      });
-      editPofilePicForm.close();
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    .finally(() => {
-      editPofilePicForm.renderSaving(false);
-    });
-};
-
+/*--------------Function for creating new card ----------------------*/
 const createCard = cardDataPlaceHolder => {
   const card = new Card(
     cardDataPlaceHolder,
@@ -254,6 +165,103 @@ const createCard = cardDataPlaceHolder => {
     },
     userId
   );
-
   return card.getView();
 };
+
+/*------------------ Function to delete or change like status on server and DOM ----------------------------*/
+const toggleLike = cardPlaceholder => {
+  api
+    .toggleLike(cardPlaceholder.getCardId(), cardPlaceholder.isLiked())
+    .then(likes => {
+      cardPlaceholder.updateLikes(likes.likes);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+/*------------------Function for updating owner profile information on server and DOM----------------------------*/
+const editProfile = profileDataPlaceholder => {
+  editFormPopup.renderSaving(true);
+  api
+    .setUserInfo(profileDataPlaceholder)
+    .then(profileDataPlaceholder => {
+      userInfo.setUserInfo({
+        name: profileDataPlaceholder.name,
+        about: profileDataPlaceholder.about
+      });
+      editFormPopup.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      editFormPopup.renderSaving(false);
+    });
+};
+/*--------------Function for adding new card  info to server and the DOM ----------------------*/
+const addACard = cardDataPlaceholder => {
+  addNewCardPopup.renderSaving(true);
+  api
+    .addCard(cardDataPlaceholder)
+    .then(res => {
+      renderCard(res);
+      addNewCardPopup.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      addNewCardPopup.renderSaving(false);
+    });
+};
+/*--------------Function for updating profile image string on server and DOM----------------------*/
+const changeProfileImage = profileImageUrlPlaceholder => {
+  editPofilePicForm.renderSaving(true);
+  api
+    .updateProfilePic(profileImageUrlPlaceholder)
+    .then(profileImageUrlPlaceholder => {
+      userInfo.setUserAvatar({
+        avatar: profileImageUrlPlaceholder.avatar
+      });
+      editPofilePicForm.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      editPofilePicForm.renderSaving(false);
+    });
+};
+/*------------------Function to delete card from server and DOM ---------------------------*/
+const handleDeleteConfirmation = card => {
+  confirmationPopup.renderSaving(true);
+  api
+    .deleteCard(card.getCardId())
+    .then(() => {
+      card.removeCard();
+      confirmationPopup.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      confirmationPopup.renderSaving(false);
+    });
+};
+/*---------------GET data for cards information and profile information from api---------------------------------*/
+api
+  .initialize()
+  .then(([user, cardsData]) => {
+    userId = user._id;
+    cardList.renderItems(cardsData);
+    userInfo.setUserInfo({
+      name: user.name,
+      about: user.about
+    });
+    userInfo.setUserAvatar({
+      avatar: user.avatar
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
