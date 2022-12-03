@@ -595,6 +595,8 @@ template {
 .profile__image-container {
 	position: relative;
 	display: flex;
+	width:120px;
+	height:120px;
 }
 
 .profile__image-edit-btn {
