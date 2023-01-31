@@ -37,12 +37,4 @@ HTML, CSS Flexbox and Grid Layout Responsive Design with JavaScript.
 
 **Figma Canvas**
 
-![Main Page](https://github.com/Kerwindows/web_project_4/blob/main/images/MAIN%20PAGE.jpg?raw=true)
-
-![Mobile Page](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE.jpg?raw=true) 
-
-![Main Page Edit Form](https://github.com/Kerwindows/web_project_4/blob/main/images/EDIT-FORM.jpg?raw=true)
-
-![Mobile Page Edit Form](https://github.com/Kerwindows/web_project_4/blob/main/images/MOBILE-EDIT-FORM.jpg?raw=true)
-
-![UI Kit](https://github.com/Kerwindows/web_project_4/blob/main/images/UI-KIT.jpg?raw=true)
+- [See it live](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
